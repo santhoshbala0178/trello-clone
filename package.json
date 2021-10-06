@@ -30,7 +30,7 @@
     "format": "prettier --write .",
     "prepare": "husky install"
   },
-  "list-staged": {
+  "lint-staged": {
     "*": "prettier --write"
   },
   "husky": {
@@ -64,8 +64,5 @@
     "prettier": "^2.4.1",
     "husky": "^7.0.0",
     "lint-staged": "^11.2.0"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }
