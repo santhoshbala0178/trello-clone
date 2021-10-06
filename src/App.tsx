@@ -23,9 +23,6 @@ function App() {
       </header>
     </div>
   );
-
-  
-
   
 }
 
