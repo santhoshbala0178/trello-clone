@@ -1,9 +1,9 @@
-import React from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { CREATE_BOARD_POPUP } from "../../../constants/actionTypes";
-import { RootState } from "../../../store";
-import { CreateNewBoard, CreateBoardText } from "./CreateBoard.style";
-import popupStateAction from "../../../actions/popupStateAction";
+import React from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { CREATE_BOARD_POPUP } from '../../../constants/actionTypes';
+import { RootState } from '../../../store';
+import { CreateNewBoard, CreateBoardText } from './CreateBoard.style';
+import popupStateAction from '../../../actions/popupStateAction';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -27,8 +27,8 @@ const CreateBoard: React.FC<Props> = ({
     dispatch(
       popupStateActionProp(
         CREATE_BOARD_POPUP,
-        !popupStateReducer.createWorkspacePopup
-      )
+        !popupStateReducer.createWorkspacePopup,
+      ),
     );
   };
 

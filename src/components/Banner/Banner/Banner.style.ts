@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const BannerContainer = styled.div`
   width: 100%;
@@ -6,6 +6,9 @@ export const BannerContainer = styled.div`
   background-color: ${(props) => props.theme.colors.bannerColor};
   font-size: 14px;
   font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const DetailsContainer = styled.div`

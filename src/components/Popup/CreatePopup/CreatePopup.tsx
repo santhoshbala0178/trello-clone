@@ -1,14 +1,14 @@
-import React from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { CREATE_POPUP } from "../../../constants/actionTypes";
+import React from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { CREATE_POPUP } from '../../../constants/actionTypes';
 import {
   CreatePopupContainer,
   CreateHeader,
   IconContainer,
-} from "./CreatePopup.style";
-import CreatePopupButton from "../CreatePopupButton/CreatePopupButton";
-import IconHolder from "../../Common/IconHolder/IconHolder";
-import popupStateAction from "../../../actions/popupStateAction";
+} from './CreatePopup.style';
+import CreatePopupButton from '../CreatePopupButton/CreatePopupButton';
+import IconHolder from '../../Common/IconHolder/IconHolder';
+import popupStateAction from '../../../actions/popupStateAction';
 
 const mapDispatchToProps = {
   popupStateActionProp: popupStateAction,
@@ -30,7 +30,7 @@ const CreatePopup: React.FC<Props> = ({ popupStateActionProp }) => {
       <CreateHeader>
         Create
         <IconContainer onClick={closePopup}>
-          <IconHolder path="assets/CloseIcon.svg" width={16} color="#000" />
+          <IconHolder name="close" color="#000" />
         </IconContainer>
       </CreateHeader>
       <div>

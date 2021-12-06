@@ -8,4 +8,5 @@ export type PopupStateReducerType = {
   createWorkspacePopup: boolean;
   createBoardPopup: boolean;
   changeWorkspace: boolean;
+  accountPopup: boolean;
 };

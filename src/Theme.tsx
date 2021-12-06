@@ -1,21 +1,19 @@
-/* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
-
-import React from "react";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
 const theme = {
   colors: {
-    background: "#FAFBFC",
-    bannerColor: "#016AA7",
-    white: "#FFF",
-    black: "#000",
-    gray: "#7e859040",
-    grayText: "#5e6c84",
-    lightGray: "#EBECF0",
-    blue: "#04527F",
-    blueButton: "#026aa7",
-    darkBlue: "#172b4d",
-    lightBlue: "#5897C1",
+    background: '#FAFBFC',
+    bannerColor: '#016AA7',
+    white: '#FFF',
+    black: '#000',
+    gray: '#7e859040',
+    grayText: '#5e6c84',
+    lightGray: '#EBECF0',
+    blue: '#04527F',
+    blueButton: '#026aa7',
+    darkBlue: '#172b4d',
+    lightBlue: '#5897C1',
   },
 };
 

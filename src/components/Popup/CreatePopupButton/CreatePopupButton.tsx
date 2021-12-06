@@ -1,18 +1,18 @@
-import React from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
+import React from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
 import {
   CREATE_POPUP,
   CREATE_BOARD_POPUP,
   CREATE_WORKSPACE_POPUP,
-} from "../../../constants/actionTypes";
-import { RootState } from "../../../store";
+} from '../../../constants/actionTypes';
+import { RootState } from '../../../store';
 import {
   CreatePopupButtonContainer,
   Description,
   Header,
-} from "./CreatePopupButton.style";
-import CreatePopupButtonType from "./CreatePopupButton.type";
-import popupStateAction from "../../../actions/popupStateAction";
+} from './CreatePopupButton.style';
+import CreatePopupButtonType from './CreatePopupButton.type';
+import popupStateAction from '../../../actions/popupStateAction';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -34,20 +34,20 @@ const CreatePopupButton = ({
   const dispatch = useDispatch();
 
   const handleButtonClick = () => {
-    if (header === "Create Workspace") {
+    if (header === 'Create Workspace') {
       dispatch(
         popupStateAction(
           CREATE_WORKSPACE_POPUP,
-          !popupStateReducer.createWorkspacePopup
-        )
+          !popupStateReducer.createWorkspacePopup,
+        ),
       );
       dispatch(popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup));
     } else {
       dispatch(
         popupStateAction(
           CREATE_BOARD_POPUP,
-          !popupStateReducer.createBoardPopup
-        )
+          !popupStateReducer.createBoardPopup,
+        ),
       );
       dispatch(popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup));
     }

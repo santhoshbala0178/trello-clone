@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ShowDetailsButton = styled.button`
   background: none;
@@ -15,8 +15,6 @@ export const ShowDetailsButton = styled.button`
 `;
 
 export const IconContainer = styled.span`
-  margin-top: 5px;
   margin-left: 5px;
-  width: 16px;
-  height: 30px;
+  padding: 5px 0px;
 `;

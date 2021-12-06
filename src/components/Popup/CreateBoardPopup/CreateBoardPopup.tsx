@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { CREATE_BOARD_POPUP } from "../../../constants/actionTypes";
-import IconHolder from "../../Common/IconHolder/IconHolder";
-import popupStateAction from "../../../actions/popupStateAction";
+import React, { useState } from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { CREATE_BOARD_POPUP } from '../../../constants/actionTypes';
+import IconHolder from '../../Common/IconHolder/IconHolder';
+import popupStateAction from '../../../actions/popupStateAction';
 import {
   Header,
   PopupHolder,
@@ -12,7 +12,7 @@ import {
   BoardName,
   BoardNameEditor,
   IconContainer,
-} from "./CreateBoardPopup.style";
+} from './CreateBoardPopup.style';
 
 const mapDispatchToProps = {
   popupStateActionProp: popupStateAction,
@@ -29,7 +29,7 @@ const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
     dispatch(popupStateActionProp(CREATE_BOARD_POPUP, false));
   };
 
-  const [boardName, setBoardName] = useState("");
+  const [boardName, setBoardName] = useState('');
 
   const onNameEdit = (e: React.FormEvent<HTMLInputElement>) => {
     setBoardName(e?.currentTarget?.value);
@@ -47,7 +47,7 @@ const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
             />
           </BoardName>
           <IconContainer onClick={closePopup}>
-            <IconHolder path="assets/CloseIcon.svg" width={22} color="#000" />
+            <IconHolder name="close" color="#000" />
           </IconContainer>
         </Header>
         <CreateBoardContainer>

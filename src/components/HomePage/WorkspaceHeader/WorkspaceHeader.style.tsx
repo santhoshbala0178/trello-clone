@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const WorkSpaceHeaderContainer = styled.div`
   display: flex;
@@ -19,9 +19,10 @@ export const AddWorkSpaceButton = styled.button`
   border: none;
   outline: none;
   background: none;
+  padding: 4px;
+  border-radius: 4px;
 
   &: hover {
-    border-radius: 4px;
     background: ${(props) => props.theme.colors.gray};
   }
 `;

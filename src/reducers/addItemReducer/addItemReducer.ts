@@ -1,5 +1,5 @@
-import { ADD_NEW_CARD, ADD_NEW_LIST } from "../../constants/actionTypes";
-import { AddItemActionType, AddItemReducerType } from "./addItemReducer.type";
+import { ADD_NEW_CARD, ADD_NEW_LIST } from '../../constants/actionTypes';
+import { AddItemActionType, AddItemReducerType } from './addItemReducer.type';
 
 const defaultState = {
   addCard: false,
@@ -8,13 +8,14 @@ const defaultState = {
 
 const AddItemReducer = (
   state = defaultState,
-  action: AddItemActionType
+  action: AddItemActionType,
 ): AddItemReducerType => {
   switch (action.type) {
     case ADD_NEW_CARD:
       return {
         ...state,
         addCard: action.payload,
+        listName: action.listName,
       };
     case ADD_NEW_LIST:
       return {

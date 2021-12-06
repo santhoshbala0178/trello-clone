@@ -1,5 +1,7 @@
-type HomePageWorkspaceType = {
+export type HomePageWorkspaceType = {
   name: string;
 };
 
-export default HomePageWorkspaceType;
+export type WorspaceIconType = {
+  code: number;
+}

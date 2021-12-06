@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import { StyledType } from "./AutoTextArea.type";
+import styled from 'styled-components';
+import { StyledType } from './AutoTextArea.type';
 
-export const TextContainer = styled.div<StyledType>`
+export const TextContainer = styled.div < StyledType > `
   min-height: ${(props) => props.height};
   width: 100%;
   margin-bottom: 5px;
 `;
 
-export const TextArea = styled.textarea<StyledType>`
+export const TextArea = styled.textarea < StyledType > `
   height: ${(props) => props.height};
   overflow-wrap: break-word;
   overflow: hidden;

@@ -1,14 +1,14 @@
-import React from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { CREATE_WORKSPACE_POPUP } from "../../../constants/actionTypes";
-import { RootState } from "../../../store";
+import React from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { CREATE_WORKSPACE_POPUP } from '../../../constants/actionTypes';
+import { RootState } from '../../../store';
 import {
   AddWorkSpaceButton,
   WorkSpaceHeaderContainer,
   WorkspaceText,
-} from "./WorkspaceHeader.style";
-import IconHolder from "../../Common/IconHolder/IconHolder";
-import popupStateAction from "../../../actions/popupStateAction";
+} from './WorkspaceHeader.style';
+import IconHolder from '../../Common/IconHolder/IconHolder';
+import popupStateAction from '../../../actions/popupStateAction';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -32,8 +32,8 @@ const WorkspaceHeader: React.FC<Props> = ({
     dispatch(
       popupStateActionProp(
         CREATE_WORKSPACE_POPUP,
-        !popupStateReducer.createWorkspacePopup
-      )
+        !popupStateReducer.createWorkspacePopup,
+      ),
     );
   };
 
@@ -42,7 +42,7 @@ const WorkspaceHeader: React.FC<Props> = ({
       <WorkSpaceHeaderContainer>
         <WorkspaceText>Workspaces</WorkspaceText>
         <AddWorkSpaceButton onClick={onAddWorkspace}>
-          <IconHolder path="assets/PlusIcon.svg" width={14} color="#5e6c84" />
+          <IconHolder name="plus" color="#5e6c84" />
         </AddWorkSpaceButton>
       </WorkSpaceHeaderContainer>
     </>

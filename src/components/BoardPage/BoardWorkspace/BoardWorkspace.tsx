@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { CHANGE_WORKSPACE } from "../../../constants/actionTypes";
-import { RootState } from "../../../store";
+import React, { useEffect, useRef } from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { CHANGE_WORKSPACE } from '../../../constants/actionTypes';
+import { RootState } from '../../../store';
 import {
   BoardWorkspaceContainer,
   WorkspaceNameHolder,
-} from "./BoardWorkspace.style";
-import BoardWorkspaceType from "./BoardWorkspace.type";
-import popupStateAction from "../../../actions/popupStateAction";
-import ChangeWorkspacePopup from "../../Popup/ChangeWorkspacePopup/ChangeWorkspacePopup";
+} from './BoardWorkspace.style';
+import BoardWorkspaceType from './BoardWorkspace.type';
+import popupStateAction from '../../../actions/popupStateAction';
+import ChangeWorkspacePopup from '../../Popup/ChangeWorkspacePopup/ChangeWorkspacePopup';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -32,7 +32,7 @@ const BoardWorkspace = ({
 
   const onClick = () => {
     dispatch(
-      popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace)
+      popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace),
     );
   };
 
@@ -43,9 +43,9 @@ const BoardWorkspace = ({
       }
     };
 
-    window.addEventListener("click", handleClick);
+    window.addEventListener('click', handleClick);
 
-    return () => window.removeEventListener("click", handleClick);
+    return () => window.removeEventListener('click', handleClick);
   }, []);
 
   const getCurrentPosition = () => modalRef.current?.getBoundingClientRect();

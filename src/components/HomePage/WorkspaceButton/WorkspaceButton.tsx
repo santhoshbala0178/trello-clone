@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import NavBarItem from "../NavBarItem/NavBarItem";
-import IconHolder from "../../Common/IconHolder/IconHolder";
-import WorkSpaceButtonContainer from "./WorkspaceButton.style";
-import { IconContainer } from "../../Banner/BannerButton/BannerButton.style";
+import React, { useState } from 'react';
+import NavBarItem from '../NavBarItem/NavBarItem';
+import IconHolder from '../../Common/IconHolder/IconHolder';
+import WorkSpaceButtonContainer from './WorkspaceButton.style';
+import { IconContainer } from '../../Banner/BannerButton/BannerButton.style';
 
 const WorkspaceButton = () => {
   const [workspaceSelected, setWorkspaceSelected] = useState(false);
@@ -17,11 +17,11 @@ const WorkspaceButton = () => {
         <span>new</span>
         <IconContainer>
           <IconHolder
-            path={
-              workspaceSelected ? "assets/UpArrow.svg" : "assets/DownArrow.svg"
+            name={
+              workspaceSelected ? 'upArrow' : 'downArrow'
             }
-            width={16}
             color="#000"
+            size="lg"
           />
         </IconContainer>
       </WorkSpaceButtonContainer>

@@ -1,5 +1,5 @@
 export type IconHolderType = {
-  path: string;
-  width: number;
+  name: string;
   color: string;
+  size?: any;
 };

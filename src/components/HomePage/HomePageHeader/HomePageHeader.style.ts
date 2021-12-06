@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HomePageHeaderContainer = styled.div`
   display: flex;
@@ -11,5 +11,5 @@ export const HomePageHeaderText = styled.span`
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
-  margin-left: 20px;
+  margin-left: 15px;
 `;

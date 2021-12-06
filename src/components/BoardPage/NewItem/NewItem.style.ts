@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const NewItemContainer = styled.div`
   display: flex;
@@ -9,12 +9,12 @@ export const NewItemContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const IconContainer = styled.div`
   cursor: pointer;
   margin-left: 5px;
-  padding-top: 5px;
 `;
 
 export const AddButton = styled.button`

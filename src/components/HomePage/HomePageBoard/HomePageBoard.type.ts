@@ -1,5 +1,7 @@
-type HomePageBoardType = {
+export type HomePageBoardType = {
   name: string;
 };
 
-export default HomePageBoardType;
+export type StarIconContainerType = {
+  isClicked: boolean;
+}

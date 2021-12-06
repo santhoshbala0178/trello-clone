@@ -3,22 +3,24 @@ import {
   CREATE_POPUP,
   CREATE_WORKSPACE_POPUP,
   CHANGE_WORKSPACE,
-} from "../../constants/actionTypes";
+  ACCOUNT_POPUP,
+} from '../../constants/actionTypes';
 import {
   PopupStateReducerType,
   PopupStateActionType,
-} from "./popupStateReducer.type";
+} from './popupStateReducer.type';
 
 const defaultState = {
   createPopup: false,
   createWorkspacePopup: false,
   createBoardPopup: false,
   changeWorkspace: false,
+  accountPopup: false,
 };
 
 const popupStateReducer = (
   state = defaultState,
-  action: PopupStateActionType
+  action: PopupStateActionType,
 ): PopupStateReducerType => {
   switch (action.type) {
     case CREATE_POPUP:
@@ -40,6 +42,11 @@ const popupStateReducer = (
       return {
         ...state,
         changeWorkspace: action.payload,
+      };
+    case ACCOUNT_POPUP:
+      return {
+        ...state,
+        accountPopup: action.payload,
       };
     default:
       return state;

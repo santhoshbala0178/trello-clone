@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import { connect, ConnectedProps, useDispatch } from "react-redux";
-import { CREATE_POPUP } from "../../../constants/actionTypes";
-import { RootState } from "../../../store";
-import CreateButton from "./BannerCreateButton.style";
-import popupStateAction from "../../../actions/popupStateAction";
-import CreatePopup from "../../Popup/CreatePopup/CreatePopup";
+import React, { useEffect, useRef } from 'react';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { CREATE_POPUP } from '../../../constants/actionTypes';
+import { RootState } from '../../../store';
+import CreateButton from './BannerCreateButton.style';
+import popupStateAction from '../../../actions/popupStateAction';
+import CreatePopup from '../../Popup/CreatePopup/CreatePopup';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -27,7 +27,7 @@ const BannerCreateButton: React.FC<Props> = ({
 
   const onCreate = () => {
     dispatch(
-      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup)
+      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup),
     );
   };
 
@@ -38,9 +38,9 @@ const BannerCreateButton: React.FC<Props> = ({
       }
     };
 
-    window.addEventListener("click", handleClick);
+    window.addEventListener('click', handleClick);
 
-    return () => window.removeEventListener("click", handleClick);
+    return () => window.removeEventListener('click', handleClick);
   }, []);
 
   return (

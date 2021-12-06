@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import ChangeWorkspacePopupType from "./ChangeWorkspacePopup.type";
+import styled from 'styled-components';
+import ChangeWorkspacePopupType from './ChangeWorkspacePopup.type';
 
-export const ChangeWorkspacePopupContainer = styled.div<ChangeWorkspacePopupType>`
+export const ChangeWorkspacePopupContainer = styled.div < ChangeWorkspacePopupType > `
   position: fixed;
   width: 250px;
   top: 110px;

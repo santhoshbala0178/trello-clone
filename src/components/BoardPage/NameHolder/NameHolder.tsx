@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import {
   NameHolderContainer,
   NameHolderHolder,
   NameHolderInput,
-} from "./NameHolder.style";
-import { NameHolderType } from "./NameHolder.type";
+} from './NameHolder.style';
+import { NameHolderType } from './NameHolder.type';
 
 const NameHolder = ({ name, type }: NameHolderType) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -26,17 +26,17 @@ const NameHolder = ({ name, type }: NameHolderType) => {
     };
 
     const handleKeyEvent = (e: any) => {
-      if (e.key === "Enter" || e.key === "Escape") {
+      if (e.key === 'Enter' || e.key === 'Escape') {
         onNameEdit(false);
       }
     };
 
-    window.addEventListener("click", handleClick);
-    window.addEventListener("keypress", handleKeyEvent);
+    window.addEventListener('click', handleClick);
+    window.addEventListener('keypress', handleKeyEvent);
 
     return () => {
-      window.removeEventListener("click", handleClick);
-      window.removeEventListener("keypress", handleKeyEvent);
+      window.removeEventListener('click', handleClick);
+      window.removeEventListener('keypress', handleKeyEvent);
     };
   }, []);
 

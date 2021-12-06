@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { StarIconContainerType } from './HomePageBoard.type';
 
 export const HomePageBoardText = styled.div`
   color: ${(props) => props.theme.colors.black};
@@ -9,6 +10,13 @@ export const HomePageBoardText = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const StarIconContainer = styled.div < StarIconContainerType > `
+  align-self: flex-end;
+  opacity: ${(props) => (props.isClicked ? 1 : 0)};
+  margin-right: ${(props) => (props.isClicked ? '15px' : '0px')}; 
+  transition: all 0.1s;
 `;
 
 export const HomePageBoardContainer = styled.div`
@@ -22,11 +30,13 @@ export const HomePageBoardContainer = styled.div`
   &: hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, 0.1);
     cursor: pointer;
-    background: linear-gradient(to right, #3d6cb9, #00fff0);
-    transform: scale(1.02);
   }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  &: hover ${HomePageBoardText} {
-    color: white;
+  &: hover ${StarIconContainer} {
+    opacity: 1;
+    margin-right: 15px;
   }
 `;

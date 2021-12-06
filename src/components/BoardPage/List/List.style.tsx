@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const ListContainer = styled.div`
+export const IconContainer = styled.div`
+    visibility: hidden;
+`;
+
+export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 272px;
@@ -10,6 +14,27 @@ const ListContainer = styled.div`
   &: hover {
     cursor: pointer;
   }
+
+  &: hover ${IconContainer} {
+    visibility: visible;
+  }
 `;
 
-export default ListContainer;
+export const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const NameContainer = styled.div`
+  width: 90%;
+`;
+
+export const CardList = styled.ul`
+  padding: 0px;
+  list-style-type: none;
+`;
+
+export const CardContainer = styled.li`
+  margin-bottom: 10px;
+`;
