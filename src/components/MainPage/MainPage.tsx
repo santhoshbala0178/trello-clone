@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { connect, ConnectedProps } from "react-redux";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { auth, db } from "../../constants/firebase/firebase";
-import { RootState } from "../../store";
-import Loader from "../Common/Loader";
-import Banner from "../Banner/Banner/Banner";
-import HomePage from "../HomePage/HomePage/HomePage";
-import BoardPage from "../BoardPage/BoardPage/BoardPage";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { auth, db } from '../../constants/firebase/firebase';
+import { RootState } from '../../store';
+import Loader from '../Common/Loader';
+import Banner from '../Banner/Banner/Banner';
+import HomePage from '../HomePage/HomePage/HomePage';
+import BoardPage from '../BoardPage/BoardPage/BoardPage';
 
 const mapStateToProps = (state: RootState) => ({
   pageNavigateReducer: state.pageNavigateReducer,
@@ -20,20 +20,20 @@ type Props = ConnectedProps<typeof connector>;
 
 const MainPage = ({ pageNavigateReducer }: Props) => {
   const [user, loadState] = useAuthState(auth);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
     try {
-      const usersCollection = collection(db, "users");
-      const userQuery = query(usersCollection, where("uid", "==", user?.uid));
+      const usersCollection = collection(db, 'users');
+      const userQuery = query(usersCollection, where('uid', '==', user?.uid));
       const docs = await getDocs(userQuery);
       console.log(docs);
       const dbUser = await (await getDocs(userQuery)).docs[0].data();
       setName(dbUser.name);
     } catch (err) {
-      console.log("An error occured while fetching user data");
+      console.log('An error occured while fetching user data');
       console.log(err);
     }
   };
@@ -44,7 +44,7 @@ const MainPage = ({ pageNavigateReducer }: Props) => {
       return;
     }
     if (!user) {
-      navigate("/");
+      navigate('/');
       return;
     }
     fetchUserName();
