@@ -1,5 +1,5 @@
 import React from 'react';
-import IconHolder from '../../Common/IconHolder/IconHolder';
+import IconHolder from '../../Common/IconHolder';
 import { ShowDetailsButton, IconContainer } from './BannerButton.style';
 import { BannerButtonType } from './BannerButton.types';
 

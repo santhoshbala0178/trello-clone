@@ -1,12 +1,15 @@
 import React from 'react';
-import IconHolder from '../../Common/IconHolder/IconHolder';
-import NameHolder from '../NameHolder/NameHolder';
+import IconHolder from '../../Common/IconHolder';
+import NameHolder from '../NameHolder';
 import {
-  CardContainer, CardEditor, IconContainer, NameContainer,
+  CardContainer,
+  CardEditor,
+  IconContainer,
+  NameContainer,
 } from './Card.style';
 import CardType from './Card.type';
 
-const Card = ({ name } : CardType) => (
+const Card = ({ name }: CardType) => (
   <CardContainer>
     <NameContainer>
       <NameHolder name={name} type="card" />

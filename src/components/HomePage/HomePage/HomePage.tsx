@@ -6,12 +6,12 @@ import {
   PageContainer,
   WorkSpaceContainer,
 } from './HomePage.style';
-import NavBarItem from '../NavBarItem/NavBarItem';
-import WorkspaceHeader from '../WorkspaceHeader/WorkspaceHeader';
-import WorkspaceButton from '../WorkspaceButton/WorkspaceButton';
-import HomePageHeader from '../HomePageHeader/HomePageHeader';
-import HomePageBoard from '../HomePageBoard/HomePageBoard';
-import HomePageWorkspace from '../HomePageWorkspace/HomePageWorkspace';
+import NavBarItem from '../NavBarItem';
+import WorkspaceHeader from '../WorkspaceHeader';
+import WorkspaceButton from '../WorkspaceButton';
+import HomePageHeader from '../HomePageHeader';
+import HomePageBoard from '../HomePageBoard';
+import HomePageWorkspace from '../HomePageWorkspace';
 
 const HomePage = () => (
   <HomePageContainer>

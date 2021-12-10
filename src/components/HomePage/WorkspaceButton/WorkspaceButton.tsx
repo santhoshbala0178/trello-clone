@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NavBarItem from '../NavBarItem/NavBarItem';
-import IconHolder from '../../Common/IconHolder/IconHolder';
+import NavBarItem from '../NavBarItem';
+import IconHolder from '../../Common/IconHolder';
 import WorkSpaceButtonContainer from './WorkspaceButton.style';
 import { IconContainer } from '../../Banner/BannerButton/BannerButton.style';
 
@@ -17,9 +17,7 @@ const WorkspaceButton = () => {
         <span>new</span>
         <IconContainer>
           <IconHolder
-            name={
-              workspaceSelected ? 'upArrow' : 'downArrow'
-            }
+            name={workspaceSelected ? 'upArrow' : 'downArrow'}
             color="#000"
             size="lg"
           />

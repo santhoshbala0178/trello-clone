@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import StarIcon from '../../Common/StarIcon/StarIcon';
+import StarIcon from '../../Common/StarIcon';
 import {
   HomePageBoardContainer,
   HomePageBoardText,

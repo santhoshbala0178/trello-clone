@@ -2,10 +2,10 @@
 import React, { useReducer } from 'react';
 import { useParams } from 'react-router';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import cardsOrderReducer from '../../../reducers/cardsOrderReducer/cardsOrderReducer';
-import StarIcon from '../../Common/StarIcon/StarIcon';
-import BoardWorkspace from '../BoardWorkspace/BoardWorkspace';
-import List from '../List/List';
+import cardsOrderReducer from '../../../reducers/cardsOrderReducer';
+import StarIcon from '../../Common/StarIcon';
+import BoardWorkspace from '../BoardWorkspace';
+import List from '../List';
 import {
   BoardPageContainer,
   BoardPageHeader,

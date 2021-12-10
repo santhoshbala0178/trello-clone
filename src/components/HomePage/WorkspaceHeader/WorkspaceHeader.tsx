@@ -7,7 +7,7 @@ import {
   WorkSpaceHeaderContainer,
   WorkspaceText,
 } from './WorkspaceHeader.style';
-import IconHolder from '../../Common/IconHolder/IconHolder';
+import IconHolder from '../../Common/IconHolder';
 import popupStateAction from '../../../actions/popupStateAction';
 
 const mapStateToProps = (state: RootState) => ({
@@ -32,8 +32,8 @@ const WorkspaceHeader: React.FC<Props> = ({
     dispatch(
       popupStateActionProp(
         CREATE_WORKSPACE_POPUP,
-        !popupStateReducer.createWorkspacePopup,
-      ),
+        !popupStateReducer.createWorkspacePopup
+      )
     );
   };
 

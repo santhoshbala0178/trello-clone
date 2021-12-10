@@ -3,8 +3,8 @@ import { connect, ConnectedProps, useDispatch } from 'react-redux';
 import { ADD_NEW_CARD, ADD_NEW_LIST } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import addItemAction from '../../../actions/addItemAction';
-import IconHolder from '../../Common/IconHolder/IconHolder';
-import AutoTextArea from '../AutoTextArea/AutoTextArea';
+import IconHolder from '../../Common/IconHolder';
+import AutoTextArea from '../AutoTextArea';
 import NewItemType from './NewItem.type';
 import {
   ButtonContainer,

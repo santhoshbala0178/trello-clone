@@ -4,7 +4,7 @@ import { CREATE_POPUP } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import CreateButton from './BannerCreateButton.style';
 import popupStateAction from '../../../actions/popupStateAction';
-import CreatePopup from '../../Popup/CreatePopup/CreatePopup';
+import CreatePopup from '../../Popup/CreatePopup';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -27,7 +27,7 @@ const BannerCreateButton: React.FC<Props> = ({
 
   const onCreate = () => {
     dispatch(
-      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup),
+      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup)
     );
   };
 

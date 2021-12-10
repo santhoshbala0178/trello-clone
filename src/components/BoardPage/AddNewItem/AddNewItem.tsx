@@ -9,8 +9,8 @@ import {
   AddNewItemHolder,
 } from './AddNewItem.style';
 import AddNewItemType from './AddNewItem.type';
-import IconHolder from '../../Common/IconHolder/IconHolder';
-import NewItem from '../NewItem/NewItem';
+import IconHolder from '../../Common/IconHolder';
+import NewItem from '../NewItem';
 import addItemAction from '../../../actions/addItemAction';
 
 const addCard = 'Add a card';
@@ -29,18 +29,25 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector> & AddNewItemType;
 
 const AddNewItem = ({
-  name, type, addItemReducer, addItemActionProp,
+  name,
+  type,
+  addItemReducer,
+  addItemActionProp,
 }: Props) => {
   const dispatch = useDispatch();
 
   const onClick = (e: any) => {
     if (type === 'card') {
       if (e.target.dataset.name) {
-        dispatch(addItemActionProp(ADD_NEW_CARD,
-          true, e.target.dataset.name));
+        dispatch(addItemActionProp(ADD_NEW_CARD, true, e.target.dataset.name));
       } else {
-        dispatch(addItemActionProp(ADD_NEW_CARD,
-          true, e.target.parentNode.dataset.name));
+        dispatch(
+          addItemActionProp(
+            ADD_NEW_CARD,
+            true,
+            e.target.parentNode.dataset.name
+          )
+        );
       }
     } else {
       dispatch(addItemActionProp(ADD_NEW_LIST, !addItemReducer.addList));
@@ -49,8 +56,9 @@ const AddNewItem = ({
 
   return (
     <AddNewItemHolder isAddList={addItemReducer.addList} type={type}>
-      {((type === 'card' && (!addItemReducer.addCard || addItemReducer.listName !== name))
-      || (type === 'list' && !addItemReducer.addList)) && (
+      {((type === 'card' &&
+        (!addItemReducer.addCard || addItemReducer.listName !== name)) ||
+        (type === 'list' && !addItemReducer.addList)) && (
         <AddNewItemContainer data-name={name} type={type} onClick={onClick}>
           <IconContainer>
             <IconHolder name="plus" color="#5e6c84" />
@@ -58,8 +66,10 @@ const AddNewItem = ({
           <TextContainer>{type === 'card' ? addCard : addList}</TextContainer>
         </AddNewItemContainer>
       )}
-      {((type === 'card' && addItemReducer.addCard && addItemReducer.listName === name)
-      || (type === 'list' && addItemReducer.addList)) && <NewItem type={type} />}
+      {((type === 'card' &&
+        addItemReducer.addCard &&
+        addItemReducer.listName === name) ||
+        (type === 'list' && addItemReducer.addList)) && <NewItem type={type} />}
     </AddNewItemHolder>
   );
 };

@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
-import popupStateReducer from './reducers/popupStateReducer/popupStateReducer';
-import addItemReducer from './reducers/addItemReducer/addItemReducer';
-import cardsOrderReducer from './reducers/cardsOrderReducer/cardsOrderReducer';
+import popupStateReducer from './reducers/popupStateReducer';
+import addItemReducer from './reducers/addItemReducer';
+import cardsOrderReducer from './reducers/cardsOrderReducer';
 
 const rootReducer = combineReducers({
   popupStateReducer,

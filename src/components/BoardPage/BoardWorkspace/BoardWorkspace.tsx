@@ -8,7 +8,7 @@ import {
 } from './BoardWorkspace.style';
 import BoardWorkspaceType from './BoardWorkspace.type';
 import popupStateAction from '../../../actions/popupStateAction';
-import ChangeWorkspacePopup from '../../Popup/ChangeWorkspacePopup/ChangeWorkspacePopup';
+import ChangeWorkspacePopup from '../../Popup/ChangeWorkspacePopup';
 
 const mapStateToProps = (state: RootState) => ({
   popupStateReducer: state.popupStateReducer,
@@ -32,7 +32,7 @@ const BoardWorkspace = ({
 
   const onClick = () => {
     dispatch(
-      popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace),
+      popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace)
     );
   };
 

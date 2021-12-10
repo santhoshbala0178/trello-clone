@@ -1,7 +1,7 @@
 import React from 'react';
 import { HomePageWorkspaceType } from './HomePageWorkspace.type';
-import HomePageBoard from '../HomePageBoard/HomePageBoard';
-import CreateBoard from '../CreateBoard/CreateBoard';
+import HomePageBoard from '../HomePageBoard';
+import CreateBoard from '../CreateBoard';
 import {
   WorkspaceContainer,
   WorkspaceName,

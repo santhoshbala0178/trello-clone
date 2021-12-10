@@ -4,9 +4,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { auth, db } from '../../firebase/firebase';
 import Loader from '../Common/Loader';
-import Banner from '../Banner/Banner/Banner';
-import HomePage from '../HomePage/HomePage/HomePage';
-import BoardPage from '../BoardPage/BoardPage/BoardPage';
+import Banner from '../Banner/Banner';
+import HomePage from '../HomePage/HomePage';
+import BoardPage from '../BoardPage/BoardPage';
 
 const MainPage = () => {
   const [user, loadState] = useAuthState(auth);

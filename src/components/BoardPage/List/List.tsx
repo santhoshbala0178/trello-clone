@@ -1,16 +1,21 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
-import AddNewItem from '../AddNewItem/AddNewItem';
-import Card from '../Card/Card';
-import NameHolder from '../NameHolder/NameHolder';
-import IconHolder from '../../Common/IconHolder/IconHolder';
+import AddNewItem from '../AddNewItem';
+import Card from '../Card';
+import NameHolder from '../NameHolder';
+import IconHolder from '../../Common/IconHolder';
 import {
-  ListContainer, CardList, CardContainer, HeaderContainer, NameContainer, IconContainer,
+  ListContainer,
+  CardList,
+  CardContainer,
+  HeaderContainer,
+  NameContainer,
+  IconContainer,
 } from './List.style';
 import ListType from './List.type';
 
-const List = ({ name, cards } : ListType) => (
+const List = ({ name, cards }: ListType) => (
   <Droppable droppableId={name} type="card">
     {(provided) => (
       <ListContainer>
@@ -27,23 +32,19 @@ const List = ({ name, cards } : ListType) => (
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          {cards.map(
-            (card, index) => (
-              <Draggable key={card.id} draggableId={card.id} index={index}>
-                {(draggableProvided) => (
-                  <CardContainer
-                    ref={draggableProvided.innerRef}
-                    {...draggableProvided.draggableProps}
-                    {...draggableProvided.dragHandleProps}
-                  >
-                    <Card
-                      name={card.name}
-                    />
-                  </CardContainer>
-                )}
-              </Draggable>
-            ),
-          )}
+          {cards.map((card, index) => (
+            <Draggable key={card.id} draggableId={card.id} index={index}>
+              {(draggableProvided) => (
+                <CardContainer
+                  ref={draggableProvided.innerRef}
+                  {...draggableProvided.draggableProps}
+                  {...draggableProvided.dragHandleProps}
+                >
+                  <Card name={card.name} />
+                </CardContainer>
+              )}
+            </Draggable>
+          ))}
           {provided.placeholder}
         </CardList>
         <AddNewItem name={name} type="card" />

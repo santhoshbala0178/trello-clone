@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import AppContainer from './App.style';
 import Theme from './Theme';
-import LoginPage from './components/LoginPage/LoginPage';
-import RegisterPage from './components/RegisterPage/RegisterPage';
-import ResetPage from './components/ResetPage/ResetPage';
-import MainPage from './components/MainPage/MainPage';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
+import ResetPage from './components/ResetPage';
+import MainPage from './components/MainPage';
 
 const App = () => (
   <Theme>
