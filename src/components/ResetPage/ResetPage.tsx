@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Link, useNavigate,
-} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { passwordReset } from '../../constants/firebase/userAuthentication';
-import { auth } from '../../constants/firebase/firebase';
+import { passwordReset } from '../../firebase/userAuthentication';
+import { auth } from '../../firebase/firebase';
 import Loader from '../Common/Loader';
 import {
-  Reset, Input, Register, ResetButton, ResetContainer,
+  Reset,
+  Input,
+  Register,
+  ResetButton,
+  ResetContainer,
 } from './ResetPage.type';
 
 const ResetPage = () => {
@@ -36,11 +38,7 @@ const ResetPage = () => {
           placeholder="Email Address"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <ResetButton
-          onClick={() => passwordReset(email)}
-        >
-          Reset
-        </ResetButton>
+        <ResetButton onClick={() => passwordReset(email)}>Reset</ResetButton>
         <Register>
           {showString}
           <Link to="/register">Register</Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, ConnectedProps, useDispatch } from 'react-redux';
-import { logOut } from '../../../constants/firebase/userAuthentication';
+import { logOut } from '../../../firebase/userAuthentication';
 import { ACCOUNT_POPUP } from '../../../constants/actionTypes';
 import {
   AccountPopupContainer,

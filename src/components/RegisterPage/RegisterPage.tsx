@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Link, useNavigate,
-} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { registerUser, signInWithGoogle } from '../../constants/firebase/userAuthentication';
-import { auth } from '../../constants/firebase/firebase';
+import {
+  registerUser,
+  signInWithGoogle,
+} from '../../firebase/userAuthentication';
+import { auth } from '../../firebase/firebase';
 import Loader from '../Common/Loader';
 import {
-  Register, RegisterContainer, Input, RegisterButton, GoogleLoginButton, Login,
+  Register,
+  RegisterContainer,
+  Input,
+  RegisterButton,
+  GoogleLoginButton,
+  Login,
 } from './RegisterPage.style';
 
 const RegisterPage = () => {
@@ -48,14 +54,10 @@ const RegisterPage = () => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <RegisterButton
-          onClick={() => registerUser(name, email, password)}
-        >
+        <RegisterButton onClick={() => registerUser(name, email, password)}>
           Register
         </RegisterButton>
-        <GoogleLoginButton
-          onClick={signInWithGoogle}
-        >
+        <GoogleLoginButton onClick={signInWithGoogle}>
           Login with Google
         </GoogleLoginButton>
         <Login>

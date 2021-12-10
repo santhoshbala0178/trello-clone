@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
-import { NAVIGATE_TO_BOARD } from '../../../constants/actionTypes';
+import { Link } from 'react-router-dom';
 import StarIcon from '../../Common/StarIcon/StarIcon';
 import {
   HomePageBoardContainer,
@@ -8,37 +7,22 @@ import {
   StarIconContainer,
 } from './HomePageBoard.style';
 import { HomePageBoardType } from './HomePageBoard.type';
-import pageNavigateAction from '../../../actions/pageNavigateAction';
 
-const mapDispatchToProps = {
-  pageNavigateActionProp: pageNavigateAction,
-};
-
-const connector = connect(null, mapDispatchToProps);
-
-type Props = ConnectedProps<typeof connector> & HomePageBoardType;
-
-const HomePageBoard = ({ name, pageNavigateActionProp }: Props) => {
+const HomePageBoard = ({ name }: HomePageBoardType) => {
   const [isClicked, setIsClicked] = useState(false);
-  const dispatch = useDispatch();
 
-  const navigateToBoard = () => {
-    dispatch(
-      pageNavigateActionProp(
-        NAVIGATE_TO_BOARD,
-        name,
-      ),
-    );
-  };
+  const navigateToBoard = () => {};
 
   return (
     <HomePageBoardContainer onClick={navigateToBoard}>
-      <HomePageBoardText>{name}</HomePageBoardText>
-      <StarIconContainer isClicked={isClicked}>
-        <StarIcon type="board" setIsClicked={setIsClicked} />
-      </StarIconContainer>
+      <Link to={`/home/${name}`}>
+        <HomePageBoardText>{name}</HomePageBoardText>
+        <StarIconContainer isClicked={isClicked}>
+          <StarIcon type="board" setIsClicked={setIsClicked} />
+        </StarIconContainer>
+      </Link>
     </HomePageBoardContainer>
   );
 };
 
-export default connector(HomePageBoard);
+export default HomePageBoard;

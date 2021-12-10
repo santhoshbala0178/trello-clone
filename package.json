@@ -3,37 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
-    "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "^17.0.0",
-    "@types/react-fontawesome": "^1.6.5",
-    "@types/react-redux": "^7.1.20",
-    "@types/react-router-dom": "^5.3.2",
     "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "eslint-config-airbnb-typescript": "^14.0.0",
-    "firebase": "^9.5.0",
-    "immutability-helper": "^3.1.1",
+    "husky": "4",
+    "lint-staged": "^11.2.0",
     "react": "^17.0.2",
-    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.2",
-    "react-firebase-hooks": "^4.0.1",
-    "react-inlinesvg": "^2.3.0",
-    "react-redux": "^7.2.6",
-    "react-router": "^6.0.2",
-    "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
-    "redux": "^4.1.2",
     "styled-components": "^5.3.1",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -44,15 +29,14 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "prettier --check .",
-    "format": "prettier --write .",
-    "prepare": "husky install"
+    "format": "prettier --write ."
   },
   "lint-staged": {
     "*": "prettier --write"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "echo \"hereeee\""
     }
   },
   "eslintConfig": {
@@ -74,14 +58,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.15.8",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.0",
-    "lint-staged": "^11.2.0",
-    "prettier": "^2.4.1",
-    "prettier-airbnb-config": "^1.0.0"
+    "prettier": "^2.4.1"
   }
 }

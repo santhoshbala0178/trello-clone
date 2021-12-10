@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { connect, ConnectedProps } from 'react-redux';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { auth, db } from '../../constants/firebase/firebase';
-import { RootState } from '../../store';
+import { auth, db } from '../../firebase/firebase';
 import Loader from '../Common/Loader';
 import Banner from '../Banner/Banner/Banner';
 import HomePage from '../HomePage/HomePage/HomePage';
 import BoardPage from '../BoardPage/BoardPage/BoardPage';
 
-const mapStateToProps = (state: RootState) => ({
-  pageNavigateReducer: state.pageNavigateReducer,
-});
-
-const connector = connect(mapStateToProps);
-
-type Props = ConnectedProps<typeof connector>;
-
-const MainPage = ({ pageNavigateReducer }: Props) => {
+const MainPage = () => {
   const [user, loadState] = useAuthState(auth);
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
@@ -41,6 +31,7 @@ const MainPage = ({ pageNavigateReducer }: Props) => {
   useEffect(() => {
     if (loadState) {
       setLoading(true);
+      console.log(loading);
       return;
     }
     if (!user) {
@@ -51,15 +42,17 @@ const MainPage = ({ pageNavigateReducer }: Props) => {
     setLoading(false);
   }, [user, loadState]);
 
-  if (loading) return <Loader />;
+  if (loadState) return <Loader />;
 
   return (
     <>
       <Banner userName={name} userEmail={user?.email} />
-      {pageNavigateReducer.boardName.length === 0 && <HomePage />}
-      {pageNavigateReducer.boardName.length > 0 && <BoardPage />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path=":boardName" element={<BoardPage />} />
+      </Routes>
     </>
   );
 };
 
-export default connector(MainPage);
+export default MainPage;

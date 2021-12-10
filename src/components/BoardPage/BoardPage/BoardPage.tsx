@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useReducer } from 'react';
+import { useParams } from 'react-router';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import cardsOrderReducer from '../../../reducers/cardsOrderReducer/cardsOrderReducer';
 import StarIcon from '../../Common/StarIcon/StarIcon';
@@ -14,22 +15,36 @@ import {
 import NameHolder from '../NameHolder/NameHolder';
 import AddNewItem from '../AddNewItem/AddNewItem';
 
-const cardVals = [{
-  cardName: 'to do',
-  cards: [{ id: '1', name: 'new' }, { id: '2', name: 'cards' },
-    { id: '3', name: 'Onemore' }],
-}, {
-  cardName: 'completed',
-  cards: [{ id: '4', name: 'comp_new' }, { id: '5', name: 'comp_cards' },
-    { id: '6', name: 'comp_Onemore' }],
-}, {
-  cardName: 'one more',
-  cards: [{ id: '7', name: 'comp_new' }, { id: '8', name: 'comp_cards' },
-    { id: '9', name: 'comp_Onemore' }],
-}];
+const cardVals = [
+  {
+    cardName: 'to do',
+    cards: [
+      { id: '1', name: 'new' },
+      { id: '2', name: 'cards' },
+      { id: '3', name: 'Onemore' },
+    ],
+  },
+  {
+    cardName: 'completed',
+    cards: [
+      { id: '4', name: 'comp_new' },
+      { id: '5', name: 'comp_cards' },
+      { id: '6', name: 'comp_Onemore' },
+    ],
+  },
+  {
+    cardName: 'one more',
+    cards: [
+      { id: '7', name: 'comp_new' },
+      { id: '8', name: 'comp_cards' },
+      { id: '9', name: 'comp_Onemore' },
+    ],
+  },
+];
 
 const BoardPage = () => {
   const [cardsList, dispatch] = useReducer(cardsOrderReducer, cardVals);
+  const { boardName } = useParams();
 
   const handleDragEnd = (result: any) => {
     if (!result.destination || result.reason !== 'DROP') return;
@@ -53,12 +68,10 @@ const BoardPage = () => {
   };
 
   return (
-    <DragDropContext
-      onDragEnd={handleDragEnd}
-    >
+    <DragDropContext onDragEnd={handleDragEnd}>
       <BoardPageContainer>
         <BoardPageHeader>
-          <NameHolder name="newaaaaaaaaaaaaaaaaaa" type="board" />
+          <NameHolder name={boardName} type="board" />
           <StarIcon type="header" />
           <BoardWorkspace name="first" />
         </BoardPageHeader>
@@ -70,7 +83,11 @@ const BoardPage = () => {
               ref={provided.innerRef}
             >
               {cardsList.map((cards, index) => (
-                <Draggable key={cards.cardName} draggableId={cards.cardName} index={index}>
+                <Draggable
+                  key={cards.cardName}
+                  draggableId={cards.cardName}
+                  index={index}
+                >
                   {(draggableProvided) => (
                     <DraggableListContainer
                       ref={draggableProvided.innerRef}

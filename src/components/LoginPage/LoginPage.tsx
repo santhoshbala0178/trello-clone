@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Link, useNavigate,
-} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { signIn, signInWithGoogle } from '../../constants/firebase/userAuthentication';
-import { auth } from '../../constants/firebase/firebase';
+import { signIn, signInWithGoogle } from '../../firebase/userAuthentication';
+import { auth } from '../../firebase/firebase';
 import Loader from '../Common/Loader';
 import {
   Input,
   GoogleLoginButton,
-  LoginButton, LoginContainer, LoginPageContainer, Register, ResetLink,
+  LoginButton,
+  LoginContainer,
+  LoginPageContainer,
+  Register,
+  ResetLink,
 } from './LoginPage.style';
 
 const LoginPage = () => {
@@ -45,14 +47,8 @@ const LoginPage = () => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <LoginButton
-          onClick={() => signIn(email, password)}
-        >
-          Login
-        </LoginButton>
-        <GoogleLoginButton
-          onClick={signInWithGoogle}
-        >
+        <LoginButton onClick={() => signIn(email, password)}>Login</LoginButton>
+        <GoogleLoginButton onClick={signInWithGoogle}>
           Login with Google
         </GoogleLoginButton>
         <ResetLink>
