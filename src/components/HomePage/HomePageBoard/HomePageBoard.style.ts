@@ -1,5 +1,14 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { StarIconContainerType } from './HomePageBoard.type';
+
+export const BoardPageLink = styled(Link)`
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 export const HomePageBoardText = styled.div`
   color: ${(props) => props.theme.colors.black};
@@ -12,10 +21,10 @@ export const HomePageBoardText = styled.div`
   text-overflow: ellipsis;
 `;
 
-export const StarIconContainer = styled.div < StarIconContainerType > `
+export const StarIconContainer = styled.div<StarIconContainerType>`
   align-self: flex-end;
   opacity: ${(props) => (props.isClicked ? 1 : 0)};
-  margin-right: ${(props) => (props.isClicked ? '15px' : '0px')}; 
+  margin-right: ${(props) => (props.isClicked ? '15px' : '0px')};
   transition: all 0.1s;
 `;
 

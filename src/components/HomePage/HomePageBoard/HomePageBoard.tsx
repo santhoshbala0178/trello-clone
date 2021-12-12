@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import StarIcon from '../../Common/StarIcon';
 import {
+  BoardPageLink,
   HomePageBoardContainer,
   HomePageBoardText,
   StarIconContainer,
@@ -11,16 +11,18 @@ import { HomePageBoardType } from './HomePageBoard.type';
 const HomePageBoard = ({ name }: HomePageBoardType) => {
   const [isClicked, setIsClicked] = useState(false);
 
-  const navigateToBoard = () => {};
+  const onIconClick = (e: any) => {
+    e.preventDefault();
+  };
 
   return (
-    <HomePageBoardContainer onClick={navigateToBoard}>
-      <Link to={`/home/${name}`}>
+    <HomePageBoardContainer>
+      <BoardPageLink to={`/home/${name}`}>
         <HomePageBoardText>{name}</HomePageBoardText>
-        <StarIconContainer isClicked={isClicked}>
+        <StarIconContainer isClicked={isClicked} onClick={onIconClick}>
           <StarIcon type="board" setIsClicked={setIsClicked} />
         </StarIconContainer>
-      </Link>
+      </BoardPageLink>
     </HomePageBoardContainer>
   );
 };
