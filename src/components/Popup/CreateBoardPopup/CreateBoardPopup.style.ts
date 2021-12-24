@@ -16,7 +16,7 @@ export const PopupHolder = styled.div`
 
 export const CreateBoardDiv = styled.div`
   width: 400px;
-  height: 150px;
+  height: 160px;
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -32,7 +32,6 @@ export const Header = styled.div`
 
 export const IconContainer = styled.div`
   cursor: pointer;
-  margin: auto;
 `;
 
 export const BoardName = styled.div`
@@ -62,6 +61,10 @@ export const BoardNameEditor = styled.input`
   }
 `;
 
+export const WorkspaceDropdown = styled.select`
+  margin-top: 5px;
+`;
+
 export const CreateBoardContainer = styled.div`
   padding: 20px 0px;
 `;
@@ -84,4 +87,9 @@ export const CreateButton = styled.button`
     background: ${(props) => props.theme.colors.gray};
     cursor: default;
   }
+`;
+
+export const ErrorText = styled.div`
+  color: ${(props) => props.theme.colors.red};
+  height: 10px;
 `;

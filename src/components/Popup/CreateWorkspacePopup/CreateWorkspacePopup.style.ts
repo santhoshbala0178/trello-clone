@@ -94,3 +94,8 @@ export const CreateButton = styled.button`
     cursor: default;
   }
 `;
+
+export const ErrorText = styled.div`
+  color: ${(props) => props.theme.colors.red};
+  height: 20px;
+`;

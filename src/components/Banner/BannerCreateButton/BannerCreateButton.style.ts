@@ -5,6 +5,7 @@ const CreateButton = styled.button`
   color: ${(props) => props.theme.colors.white};
   font: inherit;
   border-radius: 4px;
+  padding: 5px;
   outline: none;
   border: none;
   &: hover {

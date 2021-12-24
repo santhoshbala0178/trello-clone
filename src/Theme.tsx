@@ -7,6 +7,7 @@ const theme = {
     bannerColor: '#016AA7',
     white: '#FFF',
     black: '#000',
+    red: '#FF0000',
     gray: '#7e859040',
     grayText: '#5e6c84',
     lightGray: '#EBECF0',
