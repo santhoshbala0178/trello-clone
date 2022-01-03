@@ -49,6 +49,7 @@ const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
     const workspace = await getWorkspace(workSpaceName);
     if (workspace === '') {
       addNewWorkspace(workSpaceName);
+      closePopup();
     } else {
       setError(true);
     }

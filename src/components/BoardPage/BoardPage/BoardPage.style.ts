@@ -20,3 +20,5 @@ export const ListsContainer = styled.div`
 export const DraggableListContainer = styled.div`
   margin-right: 15px;
 `;
+
+export const IconHolder = styled.div``;

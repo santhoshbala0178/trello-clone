@@ -1,12 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 import popupStateReducer from './reducers/popupStateReducer';
 import addItemReducer from './reducers/addItemReducer';
-import cardsOrderReducer from './reducers/cardsOrderReducer';
+import cardsReducer from './reducers/cardsReducer';
 
 const rootReducer = combineReducers({
   popupStateReducer,
   addItemReducer,
-  cardsOrderReducer,
+  cardsReducer,
 });
 
 export const store = createStore(rootReducer);

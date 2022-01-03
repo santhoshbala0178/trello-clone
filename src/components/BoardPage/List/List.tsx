@@ -13,9 +13,9 @@ import {
   NameContainer,
   IconContainer,
 } from './List.style';
-import ListType from './List.type';
+import { CardListType } from '../BoardPage/BoardPage.type';
 
-const List = ({ name, cards }: ListType) => (
+const List = ({ name, cards }: CardListType) => (
   <Droppable droppableId={name} type="card">
     {(provided) => (
       <ListContainer>

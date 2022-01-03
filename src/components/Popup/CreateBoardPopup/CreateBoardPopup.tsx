@@ -25,7 +25,7 @@ const connector = connect(null, mapDispatchToProps);
 
 type Props = ConnectedProps<typeof connector>;
 
-const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
+const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
   const dispatch = useDispatch();
 
   const closePopup = () => {
@@ -47,9 +47,10 @@ const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
   };
 
   const createNewBoard = async () => {
-    const boardIdx = await getBoard(workspace, boardName);
+    const boardIdx = await getBoard(workspace, boardName, true);
     if (boardIdx === -1) {
       addNewBoard(workspace, boardName);
+      closePopup();
     } else {
       setError(true);
     }
@@ -79,7 +80,7 @@ const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
         </ErrorText>
         <CreateBoardContainer>
           <CreateButton
-            disabled={boardName.length === 0}
+            disabled={boardName.length === 0 || error}
             onClick={createNewBoard}
           >
             Create Board
@@ -90,4 +91,4 @@ const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
   );
 };
 
-export default connector(CreateWorkSpacePopup);
+export default connector(CreateBoardPopup);

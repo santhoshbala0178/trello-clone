@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { updateStarredBoard } from '../../../firebase/manageData';
 import StarIcon from '../../Common/StarIcon';
 import {
   BoardPageLink,
@@ -8,19 +9,19 @@ import {
 } from './HomePageBoard.style';
 import { HomePageBoardType } from './HomePageBoard.type';
 
-const HomePageBoard = ({ name }: HomePageBoardType) => {
-  const [isClicked, setIsClicked] = useState(false);
-
-  const onIconClick = (e: any) => {
+const HomePageBoard = ({ workspaceName, board }: HomePageBoardType) => {
+  const onIconClick = async (e: any) => {
     e.preventDefault();
+    // Update the Starred board status
+    await updateStarredBoard(workspaceName, board.name);
   };
 
   return (
     <HomePageBoardContainer>
-      <BoardPageLink to={`/home/${name}`}>
-        <HomePageBoardText>{name}</HomePageBoardText>
-        <StarIconContainer isClicked={isClicked} onClick={onIconClick}>
-          <StarIcon type="board" setIsClicked={setIsClicked} />
+      <BoardPageLink to={`/home/${workspaceName}/${board?.name}`}>
+        <HomePageBoardText>{board?.name}</HomePageBoardText>
+        <StarIconContainer isClicked={board?.starred} onClick={onIconClick}>
+          <StarIcon type="board" isClicked={board?.starred} />
         </StarIconContainer>
       </BoardPageLink>
     </HomePageBoardContainer>

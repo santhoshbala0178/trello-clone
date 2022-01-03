@@ -49,7 +49,7 @@ const MainPage = () => {
       <Banner userName={name} userEmail={user?.email} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path=":boardName" element={<BoardPage />} />
+        <Route path=":workspaceName/:boardName" element={<BoardPage />} />
       </Routes>
     </>
   );

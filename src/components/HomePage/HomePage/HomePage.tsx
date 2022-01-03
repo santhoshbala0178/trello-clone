@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import {
   ContentContainer,
   HomePageContainer,
@@ -8,32 +8,50 @@ import {
 } from './HomePage.style';
 import NavBarItem from '../NavBarItem';
 import WorkspaceHeader from '../WorkspaceHeader';
-import WorkspaceButton from '../WorkspaceButton';
 import HomePageHeader from '../HomePageHeader';
-import HomePageBoard from '../HomePageBoard';
 import HomePageWorkspace from '../HomePageWorkspace';
+import { getAllWorkspaces } from '../../../firebase/manageData';
+import { WorkspaceType } from '../HomePageWorkspace/HomePageWorkspace.type';
 
-const HomePage = () => (
-  <HomePageContainer>
-    <Navigator>
-      <PageContainer>
-        <NavBarItem name="Boards" isMainButton />
-      </PageContainer>
-      <WorkSpaceContainer>
-        <WorkspaceHeader />
-        <WorkspaceButton />
-        <WorkspaceButton />
-        <WorkspaceButton />
-      </WorkSpaceContainer>
-    </Navigator>
-    <ContentContainer>
-      <HomePageHeader iconPath="star" text="Starred boards" />
-      <HomePageBoard name="New" />
-      <HomePageHeader iconPath="user" text="Your workspaces" />
-      <HomePageWorkspace name="New" />
-      <HomePageWorkspace name="One More" />
-    </ContentContainer>
-  </HomePageContainer>
-);
+const HomePage = () => {
+  const [workspaces, setWorkspaces] = useState<any>();
+
+  const getData = useCallback(async () => {
+    await getAllWorkspaces(setWorkspaces);
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <HomePageContainer>
+      <Navigator>
+        <PageContainer>
+          <NavBarItem name="Boards" isMainButton />
+        </PageContainer>
+        <WorkSpaceContainer>
+          <WorkspaceHeader />
+          {/*
+            <WorkspaceButton />
+            <WorkspaceButton />
+            <WorkspaceButton />
+          */}
+        </WorkSpaceContainer>
+      </Navigator>
+      <ContentContainer>
+        {/* 
+          <HomePageHeader iconPath="star" text="Starred boards" />
+          <HomePageBoard name="New" />
+        */}
+        <HomePageHeader iconPath="user" text="Your workspaces" />
+        {workspaces?.length > 0 &&
+          workspaces.map((workspace: WorkspaceType) => (
+            <HomePageWorkspace workspace={workspace} key={workspace?.name} />
+          ))}
+      </ContentContainer>
+    </HomePageContainer>
+  );
+};
 
 export default HomePage;

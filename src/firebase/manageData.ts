@@ -6,6 +6,9 @@ import {
   query,
   where,
   updateDoc,
+  onSnapshot,
+  orderBy,
+  Timestamp,
 } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -18,10 +21,32 @@ export const addNewWorkspace = async (workspaceName: string) => {
   try {
     await addDoc(collection(db, DATA_COLLECTION), {
       name: workspaceName,
+      created: Timestamp.now(),
     });
   } catch (err) {
     console.log(err);
   }
+};
+
+/*
+Get all workspace Data
+*/
+export const getAllWorkspaces = async (setWorkspaces: any) => {
+  try {
+    const q = query(collection(db, DATA_COLLECTION), orderBy('created'));
+    onSnapshot(q, (querySnapshot) => {
+      if (!querySnapshot.empty) {
+        const workspaces: any = [];
+        querySnapshot.forEach((eachDoc) => workspaces.push(eachDoc.data()));
+        setWorkspaces([...workspaces]);
+      }
+      return [];
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
+  return [];
 };
 
 /*
@@ -58,8 +83,9 @@ export const addNewBoard = async (workspaceName: string, boardName: string) => {
       if ('boards' in workspaceData.data()) {
         boardList.push(newItem);
       } else {
-        boardList = newItem;
+        boardList = [newItem];
       }
+      console.log(boardList);
       updateDoc(docRef, { boards: boardList });
     }
   } catch (err) {
@@ -94,7 +120,11 @@ export const updateStarredBoard = async (
 /*
 Get the board with the given name
 */
-export const getBoard = async (workspaceName: string, boardName: string) => {
+export const getBoard = async (
+  workspaceName: string,
+  boardName: string,
+  returnIdx: boolean
+) => {
   try {
     const workspaceData = await getWorkspace(workspaceName);
     if (workspaceData !== '') {
@@ -102,11 +132,13 @@ export const getBoard = async (workspaceName: string, boardName: string) => {
       const boardIdx = boardList.findIndex(
         (board: any) => board.name === boardName
       );
-      return boardIdx;
+      if (returnIdx) return boardIdx;
+
+      if (boardIdx !== -1) return boardList[boardIdx];
     }
   } catch (err) {
     console.log(err);
   }
 
-  return -1;
+  return [];
 };

@@ -1,6 +1,6 @@
 type StarIconType = {
-    type: string,
-    setIsClicked?: React.Dispatch<React.SetStateAction<boolean>>
-}
+  type: string;
+  isClicked?: boolean;
+};
 
 export default StarIconType;

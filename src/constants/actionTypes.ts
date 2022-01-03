@@ -15,3 +15,9 @@ export const ADD_NEW_LIST = 'ADD_NEW_LIST';
 export const NAVIGATE_TO_HOME = 'NAVIGATE_TO_HOME';
 
 export const NAVIGATE_TO_BOARD = 'NAVIGATE_TO_BOARD';
+
+export const SET_DATA = 'SET_DATA';
+
+export const ORDER_LIST = 'ORDER_LIST';
+
+export const ORDER_CARD = 'ORDER_CARD';

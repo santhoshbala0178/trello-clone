@@ -5,9 +5,8 @@ import { AutoTextAreaType } from './AutoTextArea.type';
 const cardPlaceholder = 'Enter a title for this card..';
 const listPlaceholder = 'Enter list title..';
 
-const AutoTextArea = ({ type }: AutoTextAreaType) => {
+const AutoTextArea = ({ type, text, setText }: AutoTextAreaType) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const [text, setText] = useState('');
   const [textAreaHeight, setTextAreaHeight] = useState('auto');
   const [parentHeight, setParentHeight] = useState('auto');
 

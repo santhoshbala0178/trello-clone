@@ -1,5 +1,5 @@
 type BoardWorkspaceType = {
-  name: String;
+  name?: String;
 };
 
 export default BoardWorkspaceType;

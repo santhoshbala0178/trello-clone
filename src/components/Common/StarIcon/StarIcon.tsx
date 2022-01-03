@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StarIconContainer from './StarIcon.style';
 import IconHolder from '../IconHolder';
 import StarIconType from './StarIcon.type';
 
-const StarIcon = ({ type, setIsClicked }: StarIconType) => {
+const StarIcon = ({ type, isClicked }: StarIconType) => {
   const [name, setName] = useState('star');
   const [color, setColor] = useState('#000');
 
@@ -20,12 +20,18 @@ const StarIcon = ({ type, setIsClicked }: StarIconType) => {
   const onClick = () => {
     if (name === 'star') {
       setName('starFilled');
-      if (setIsClicked !== undefined) setIsClicked(true);
     } else {
       setName('star');
-      if (setIsClicked !== undefined) setIsClicked(false);
     }
   };
+
+  useEffect(() => {
+    if (isClicked) {
+      console.log(isClicked, 'here');
+      setName('starFilled');
+      setColor('#FFFF00');
+    }
+  }, [isClicked]);
 
   return (
     <StarIconContainer
