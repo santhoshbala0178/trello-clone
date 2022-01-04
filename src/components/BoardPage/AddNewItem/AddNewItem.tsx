@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { ADD_NEW_CARD, ADD_NEW_LIST } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import {
@@ -34,23 +34,15 @@ const AddNewItem = ({
   addItemReducer,
   addItemActionProp,
 }: Props) => {
-  const dispatch = useDispatch();
-
   const onClick = (e: any) => {
     if (type === 'card') {
       if (e.target.dataset.name) {
-        dispatch(addItemActionProp(ADD_NEW_CARD, true, e.target.dataset.name));
+        addItemActionProp(ADD_NEW_CARD, true, e.target.dataset.name);
       } else {
-        dispatch(
-          addItemActionProp(
-            ADD_NEW_CARD,
-            true,
-            e.target.parentNode.dataset.name
-          )
-        );
+        addItemActionProp(ADD_NEW_CARD, true, e.target.parentNode.dataset.name);
       }
     } else {
-      dispatch(addItemActionProp(ADD_NEW_LIST, !addItemReducer.addList));
+      addItemActionProp(ADD_NEW_LIST, !addItemReducer.addList);
     }
   };
 

@@ -8,6 +8,7 @@ type cardsActionType = {
 
 export type updateOrderType = {
   name?: string;
+  listName?: string;
   source?: number;
   destination?: number;
   sourceDroppableId?: string;

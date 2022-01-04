@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_POPUP } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import CreateButton from './BannerCreateButton.style';
@@ -22,19 +22,16 @@ const BannerCreateButton: React.FC<Props> = ({
   popupStateReducer,
   popupStateActionProp,
 }) => {
-  const dispatch = useDispatch();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const onCreate = () => {
-    dispatch(
-      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup)
-    );
+    popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup);
   };
 
   useEffect(() => {
     const handleClick = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
-        dispatch(popupStateActionProp(CREATE_POPUP, false));
+        popupStateActionProp(CREATE_POPUP, false);
       }
     };
 

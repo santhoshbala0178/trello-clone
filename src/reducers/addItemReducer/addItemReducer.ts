@@ -4,11 +4,12 @@ import { AddItemActionType, AddItemReducerType } from './addItemReducer.type';
 const defaultState = {
   addCard: false,
   addList: false,
+  listName: '',
 };
 
 const AddItemReducer = (
   state = defaultState,
-  action: AddItemActionType,
+  action: AddItemActionType
 ): AddItemReducerType => {
   switch (action.type) {
     case ADD_NEW_CARD:

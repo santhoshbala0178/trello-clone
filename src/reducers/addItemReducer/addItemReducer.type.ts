@@ -1,11 +1,11 @@
 export type AddItemActionType = {
   type: string;
   payload: boolean;
-  listName?: string;
+  listName: string;
 };
 
 export type AddItemReducerType = {
   addCard: boolean;
   addList: boolean;
-  listName?: string;
+  listName: string;
 };

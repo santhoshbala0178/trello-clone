@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_WORKSPACE_POPUP } from '../../../constants/actionTypes';
 import {
   PopupHolder,
@@ -28,10 +28,8 @@ const connector = connect(null, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector>;
 
 const CreateWorkSpacePopup: React.FC<Props> = ({ popupStateActionProp }) => {
-  const dispatch = useDispatch();
-
   const closePopup = () => {
-    dispatch(popupStateActionProp(CREATE_WORKSPACE_POPUP, false));
+    popupStateActionProp(CREATE_WORKSPACE_POPUP, false);
   };
 
   const headerText = "Let's build a Workspace";

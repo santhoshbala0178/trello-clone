@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CHANGE_WORKSPACE } from '../../../constants/actionTypes';
 import {
   ChangeWorkspacePopupContainer,
@@ -26,10 +26,8 @@ const ChangeWorkspacePopup: React.FC<Props> = ({
   position,
   popupStateActionProp,
 }) => {
-  const dispatch = useDispatch();
-
   const closePopup = () => {
-    dispatch(popupStateActionProp(CHANGE_WORKSPACE, false));
+    popupStateActionProp(CHANGE_WORKSPACE, false);
   };
 
   return (
@@ -37,10 +35,7 @@ const ChangeWorkspacePopup: React.FC<Props> = ({
       <ChangeHeader>
         Change Workspace
         <IconContainer onClick={closePopup}>
-          <IconHolder
-            name="close"
-            color="#000"
-          />
+          <IconHolder name="close" color="#000" />
         </IconContainer>
       </ChangeHeader>
       <ChangeContent>

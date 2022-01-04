@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import {
   CREATE_POPUP,
   CREATE_BOARD_POPUP,
@@ -31,25 +31,16 @@ const CreatePopupButton = ({
   description,
   popupStateReducer,
 }: Props) => {
-  const dispatch = useDispatch();
-
   const handleButtonClick = () => {
     if (header === 'Create Workspace') {
-      dispatch(
-        popupStateAction(
-          CREATE_WORKSPACE_POPUP,
-          !popupStateReducer.createWorkspacePopup,
-        ),
+      popupStateAction(
+        CREATE_WORKSPACE_POPUP,
+        !popupStateReducer.createWorkspacePopup
       );
-      dispatch(popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup));
+      popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup);
     } else {
-      dispatch(
-        popupStateAction(
-          CREATE_BOARD_POPUP,
-          !popupStateReducer.createBoardPopup,
-        ),
-      );
-      dispatch(popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup));
+      popupStateAction(CREATE_BOARD_POPUP, !popupStateReducer.createBoardPopup);
+      popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup);
     }
   };
 

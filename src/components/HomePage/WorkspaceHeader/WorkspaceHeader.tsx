@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_WORKSPACE_POPUP } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import {
@@ -26,14 +26,10 @@ const WorkspaceHeader: React.FC<Props> = ({
   popupStateReducer,
   popupStateActionProp,
 }) => {
-  const dispatch = useDispatch();
-
   const onAddWorkspace = () => {
-    dispatch(
-      popupStateActionProp(
-        CREATE_WORKSPACE_POPUP,
-        !popupStateReducer.createWorkspacePopup
-      )
+    popupStateActionProp(
+      CREATE_WORKSPACE_POPUP,
+      !popupStateReducer.createWorkspacePopup
     );
   };
 

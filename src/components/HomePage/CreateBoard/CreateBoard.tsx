@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_BOARD_POPUP } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import { CreateNewBoard, CreateBoardText } from './CreateBoard.style';
@@ -21,14 +21,10 @@ const CreateBoard: React.FC<Props> = ({
   popupStateReducer,
   popupStateActionProp,
 }) => {
-  const dispatch = useDispatch();
-
   const onCreateNewBoard = () => {
-    dispatch(
-      popupStateActionProp(
-        CREATE_BOARD_POPUP,
-        !popupStateReducer.createWorkspacePopup,
-      ),
+    popupStateActionProp(
+      CREATE_BOARD_POPUP,
+      !popupStateReducer.createWorkspacePopup
     );
   };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CHANGE_WORKSPACE } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import {
@@ -27,19 +27,16 @@ const BoardWorkspace = ({
   popupStateReducer,
   popupStateActionProp,
 }: Props) => {
-  const dispatch = useDispatch();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const onClick = () => {
-    dispatch(
-      popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace)
-    );
+    popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace);
   };
 
   useEffect(() => {
     const handleClick = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
-        dispatch(popupStateActionProp(CHANGE_WORKSPACE, false));
+        popupStateActionProp(CHANGE_WORKSPACE, false);
       }
     };
 

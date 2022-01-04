@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
-import { ADD_NEW_CARD, ADD_NEW_LIST } from '../../../constants/actionTypes';
+import { connect, ConnectedProps } from 'react-redux';
+import {
+  ADD_NEW_CARD,
+  ADD_NEW_CARD_ITEM,
+  ADD_NEW_LIST,
+  ADD_NEW_LIST_ITEM,
+} from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import addItemAction from '../../../actions/addItemAction';
 import cardsModifyAction from '../../../actions/cardsModifyAction';
@@ -33,30 +38,28 @@ const NewItem = ({
   addItemActionProp,
   cardsModifyActionProp,
 }: Props) => {
-  const dispatch = useDispatch();
   const [text, setText] = useState('');
 
   const onClose = () => {
     if (type === 'card') {
-      dispatch(addItemActionProp(ADD_NEW_CARD, !addItemReducer.addCard));
+      addItemActionProp(ADD_NEW_CARD, !addItemReducer.addCard);
     } else {
-      dispatch(addItemActionProp(ADD_NEW_LIST, !addItemReducer.addList));
+      addItemActionProp(ADD_NEW_LIST, !addItemReducer.addList);
     }
   };
 
   const addNewItem = () => {
     if (type === 'card') {
-      dispatch(
-        cardsModifyActionProp(ADD_NEW_CARD, {
-          name: text,
-        })
-      );
+      cardsModifyActionProp(ADD_NEW_CARD_ITEM, {
+        name: text,
+        listName: addItemReducer.listName,
+      });
+      addItemActionProp(ADD_NEW_CARD, !addItemReducer.addCard);
     } else {
-      dispatch(
-        cardsModifyActionProp(ADD_NEW_LIST, {
-          name: text,
-        })
-      );
+      cardsModifyActionProp(ADD_NEW_LIST_ITEM, {
+        name: text,
+      });
+      addItemActionProp(ADD_NEW_LIST, !addItemReducer.addList);
     }
   };
 

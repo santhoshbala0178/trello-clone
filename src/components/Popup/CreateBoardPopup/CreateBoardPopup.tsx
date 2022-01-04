@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_BOARD_POPUP } from '../../../constants/actionTypes';
 import IconHolder from '../../Common/IconHolder/IconHolder';
 import popupStateAction from '../../../actions/popupStateAction';
@@ -26,10 +26,8 @@ const connector = connect(null, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector>;
 
 const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
-  const dispatch = useDispatch();
-
   const closePopup = () => {
-    dispatch(popupStateActionProp(CREATE_BOARD_POPUP, false));
+    popupStateActionProp(CREATE_BOARD_POPUP, false);
   };
 
   const [boardName, setBoardName] = useState('');

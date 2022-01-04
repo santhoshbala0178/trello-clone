@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_POPUP } from '../../../constants/actionTypes';
 import {
   CreatePopupContainer,
@@ -19,10 +19,8 @@ const connector = connect(null, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector>;
 
 const CreatePopup: React.FC<Props> = ({ popupStateActionProp }) => {
-  const dispatch = useDispatch();
-
   const closePopup = () => {
-    dispatch(popupStateActionProp(CREATE_POPUP, false));
+    popupStateActionProp(CREATE_POPUP, false);
   };
 
   return (

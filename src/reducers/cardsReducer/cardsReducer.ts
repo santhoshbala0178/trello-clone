@@ -1,6 +1,7 @@
 import { CardListType } from '../../components/BoardPage/BoardPage/BoardPage.type';
 import {
-  ADD_NEW_LIST,
+  ADD_NEW_CARD_ITEM,
+  ADD_NEW_LIST_ITEM,
   ORDER_CARD,
   ORDER_LIST,
   SET_DATA,
@@ -29,30 +30,47 @@ const cardsReducer = (
         return [...action?.data];
       }
       return state;
-    case ADD_NEW_LIST:
+    case ADD_NEW_LIST_ITEM:
+      console.log('add hereeeee', action.type);
       if (!Array.isArray(action.data) && action.data && action.data.name) {
         return [...state, { name: action?.data?.name, cards: [] }];
+      }
+      return state;
+    case ADD_NEW_CARD_ITEM:
+      if (
+        !Array.isArray(action.data) &&
+        action.data &&
+        action.data.name &&
+        action.data.listName
+      ) {
+        const listname = action.data?.listName;
+        const index = state.findIndex((list) => list.name === listname);
+        const items = [...state];
+        items[index].cards.push({
+          id: `id${Math.random().toString(16).slice(10)}`,
+          name: action.data.name,
+        });
+        return [...items];
       }
       return state;
     case ORDER_LIST: {
       if (
         !Array.isArray(action.data) &&
-        action.data &&
-        action.data.source &&
-        action.data.destination
+        action.data?.source !== undefined &&
+        action.data?.destination !== undefined
       ) {
         const items = [...state];
         const [reorderedItem] = items.splice(action.data.source, 1);
         items.splice(action.data.destination, 0, reorderedItem);
+        return [...items];
       }
       return state;
     }
     case ORDER_CARD: {
       if (
         !Array.isArray(action.data) &&
-        action.data &&
-        action.data.source &&
-        action.data.destination
+        action.data?.source !== undefined &&
+        action.data?.destination !== undefined
       ) {
         const items = [...state];
         const sourceId = action.data.sourceDroppableId;
@@ -71,6 +89,7 @@ const cardsReducer = (
           0,
           reorderedItem
         );
+        return [...items];
       }
       return state;
     }

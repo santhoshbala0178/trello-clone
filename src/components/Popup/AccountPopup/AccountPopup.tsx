@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { logOut } from '../../../firebase/userAuthentication';
 import { ACCOUNT_POPUP } from '../../../constants/actionTypes';
 import {
@@ -30,10 +30,8 @@ const AccountPopup: React.FC<Props> = ({
   userEmail,
   initials,
 }) => {
-  const dispatch = useDispatch();
-
   const closePopup = () => {
-    dispatch(popupStateActionProp(ACCOUNT_POPUP, false));
+    popupStateActionProp(ACCOUNT_POPUP, false);
   };
   console.log(userName, userEmail, initials);
 

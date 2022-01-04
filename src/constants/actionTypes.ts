@@ -18,6 +18,10 @@ export const NAVIGATE_TO_BOARD = 'NAVIGATE_TO_BOARD';
 
 export const SET_DATA = 'SET_DATA';
 
+export const ADD_NEW_CARD_ITEM = 'ADD_NEW_CARD_ITEM';
+
+export const ADD_NEW_LIST_ITEM = 'ADD_NEW_LIST_ITEM';
+
 export const ORDER_LIST = 'ORDER_LIST';
 
 export const ORDER_CARD = 'ORDER_CARD';

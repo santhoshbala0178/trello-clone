@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { connect, ConnectedProps, useDispatch } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { ACCOUNT_POPUP } from '../../../constants/actionTypes';
 import { RootState } from '../../../store';
 import { AccountButtonType } from './AccountButton.type';
@@ -23,19 +23,16 @@ const AccountButton: React.FC<Props> = ({
   popupStateActionProp,
   initials,
 }) => {
-  const dispatch = useDispatch();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const onClick = () => {
-    dispatch(
-      popupStateActionProp(ACCOUNT_POPUP, !popupStateReducer.accountPopup),
-    );
+    popupStateActionProp(ACCOUNT_POPUP, !popupStateReducer.accountPopup);
   };
 
   useEffect(() => {
     const handleClick = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
-        dispatch(popupStateActionProp(ACCOUNT_POPUP, false));
+        popupStateActionProp(ACCOUNT_POPUP, false);
       }
     };
 
@@ -46,10 +43,7 @@ const AccountButton: React.FC<Props> = ({
 
   return (
     <div ref={modalRef}>
-      <AccountButtonContainer
-        isInPopup={false}
-        onClick={onClick}
-      >
+      <AccountButtonContainer isInPopup={false} onClick={onClick}>
         {initials}
       </AccountButtonContainer>
     </div>
