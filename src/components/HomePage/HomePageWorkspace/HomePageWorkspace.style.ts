@@ -9,7 +9,7 @@ export const Header = styled.div`
   margin-bottom: 20px;
 `;
 
-export const WorkspaceIcon = styled.div < WorspaceIconType > ` 
+export const WorkspaceIcon = styled.div<WorspaceIconType>`
   width: 32px;
   height: 32px;
   border-radius: 4px;
@@ -40,4 +40,5 @@ export const ContentContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  flex-wrap: wrap;
 `;

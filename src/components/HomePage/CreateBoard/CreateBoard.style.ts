@@ -11,6 +11,7 @@ export const CreateNewBoard = styled.button`
   margin-bottom: 50px;
   outline: none;
   border: none;
+  min-width: 150px;
   &: hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, 0.1);
     transform: scale(1.02);

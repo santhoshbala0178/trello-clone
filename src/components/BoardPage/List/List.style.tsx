@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const IconContainer = styled.div`
-    visibility: hidden;
+  visibility: hidden;
 `;
 
 export const ListContainer = styled.div`
@@ -11,6 +11,7 @@ export const ListContainer = styled.div`
   background: ${(props) => props.theme.colors.lightGray};
   border-radius: 4px;
   padding: 10px;
+  margin-bottom: 20px;
   &: hover {
     cursor: pointer;
   }

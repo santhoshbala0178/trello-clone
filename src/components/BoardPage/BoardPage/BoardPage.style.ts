@@ -31,6 +31,7 @@ export const ListsContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-basis: 20%;
+  flex-wrap: wrap;
 `;
 
 export const DraggableListContainer = styled.div`
