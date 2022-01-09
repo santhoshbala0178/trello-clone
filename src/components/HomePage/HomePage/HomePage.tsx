@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
 import {
   ContentContainer,
   HomePageContainer,
@@ -15,13 +15,21 @@ import { WorkspaceType } from '../HomePageWorkspace/HomePageWorkspace.type';
 
 const HomePage = () => {
   const [workspaces, setWorkspaces] = useState<any>();
+  const isMountedRef = useRef(false);
 
   const getData = useCallback(async () => {
-    await getAllWorkspaces(setWorkspaces);
+    if (isMountedRef.current) {
+      await getAllWorkspaces(setWorkspaces);
+    }
   }, []);
 
   useEffect(() => {
+    isMountedRef.current = true;
     getData();
+
+    return () => {
+      isMountedRef.current = false;
+    };
   }, []);
 
   return (

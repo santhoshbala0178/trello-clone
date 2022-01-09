@@ -51,6 +51,23 @@ export const getAllWorkspaces = async (setWorkspaces: any) => {
 };
 
 /*
+Get all workspace Names
+*/
+export const getAllWorkspaceNames = async () => {
+  try {
+    const q = query(collection(db, DATA_COLLECTION), orderBy('created'));
+    const querySnapshot = await getDocs(q);
+    const workspaces: any = [];
+    querySnapshot.forEach((eachDoc) => workspaces.push(eachDoc.data().name));
+    return workspaces;
+  } catch (err) {
+    console.log(err);
+  }
+
+  return [];
+};
+
+/*
 Get the Worspace with the given name
 */
 export const getWorkspace = async (workspaceName: string) => {
@@ -128,7 +145,7 @@ export const getBoard = async (
 ) => {
   try {
     const workspaceData = await getWorkspace(workspaceName);
-    if (workspaceData !== '') {
+    if (workspaceData !== '' && 'boards' in workspaceData.data()) {
       const boardList = workspaceData.get('boards');
       const boardIdx = boardList.findIndex(
         (board: any) => board.name === boardName
@@ -136,6 +153,8 @@ export const getBoard = async (
       if (returnIdx) return boardIdx;
 
       if (boardIdx !== -1) return boardList[boardIdx];
+    } else {
+      return -1;
     }
   } catch (err) {
     console.log(err);

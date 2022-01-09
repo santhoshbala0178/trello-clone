@@ -95,6 +95,7 @@ const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
 
   const saveChanges = () => {
     saveCardChanges(workspaceName || '', boardName || '', cardsReducer);
+    alert('Changes Saved!!!');
   };
 
   if (isLoading) return <Loader />;

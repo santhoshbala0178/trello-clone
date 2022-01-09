@@ -7,6 +7,7 @@ import Loader from '../Common/Loader';
 import Banner from '../Banner/Banner';
 import HomePage from '../HomePage/HomePage';
 import BoardPage from '../BoardPage/BoardPage';
+import MainPageContainer from './MainPage.style';
 
 const MainPage = () => {
   const [user, loadState] = useAuthState(auth);
@@ -45,13 +46,13 @@ const MainPage = () => {
   if (loadState) return <Loader />;
 
   return (
-    <>
+    <MainPageContainer>
       <Banner userName={name} userEmail={user?.email} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path=":workspaceName/:boardName" element={<BoardPage />} />
       </Routes>
-    </>
+    </MainPageContainer>
   );
 };
 

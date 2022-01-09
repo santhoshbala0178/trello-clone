@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { CREATE_BOARD_POPUP } from '../../../constants/actionTypes';
 import IconHolder from '../../Common/IconHolder/IconHolder';
@@ -15,7 +15,11 @@ import {
   WorkspaceDropdown,
   ErrorText,
 } from './CreateBoardPopup.style';
-import { addNewBoard, getBoard } from '../../../firebase/manageData';
+import {
+  addNewBoard,
+  getAllWorkspaceNames,
+  getBoard,
+} from '../../../firebase/manageData';
 
 const mapDispatchToProps = {
   popupStateActionProp: popupStateAction,
@@ -26,12 +30,14 @@ const connector = connect(null, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector>;
 
 const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
+  const [allWorkspaces, setAllWorspaces] = useState<any>([]);
+
   const closePopup = () => {
     popupStateActionProp(CREATE_BOARD_POPUP, false);
   };
 
   const [boardName, setBoardName] = useState('');
-  const [workspace, setWorkspace] = useState('New Workspace');
+  const [workspace, setWorkspace] = useState('');
   const [error, setError] = useState(false);
 
   const onNameEdit = (e: React.FormEvent<HTMLInputElement>) => {
@@ -45,6 +51,7 @@ const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
   };
 
   const createNewBoard = async () => {
+    console.log(workspace, boardName);
     const boardIdx = await getBoard(workspace, boardName, true);
     if (boardIdx === -1) {
       addNewBoard(workspace, boardName);
@@ -53,6 +60,15 @@ const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
       setError(true);
     }
   };
+
+  const getWorkspaces = async () => {
+    const workspaces: any = await getAllWorkspaceNames();
+    setAllWorspaces([...workspaces]);
+  };
+
+  useEffect(() => {
+    getWorkspaces();
+  }, []);
 
   return (
     <PopupHolder onClick={closePopup}>
@@ -64,9 +80,12 @@ const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
               value={boardName}
               onChange={onNameEdit}
             />
-            <WorkspaceDropdown value={workspace} onChange={onWorspaceSelect}>
-              <option value="New Workspace">New Workspace</option>
-              <option value="as">as</option>
+            <WorkspaceDropdown onChange={onWorspaceSelect}>
+              {allWorkspaces.map((workspaceName: string, idx: number) => (
+                <option value={workspaceName} selected={idx === 0}>
+                  {workspaceName}
+                </option>
+              ))}
             </WorkspaceDropdown>
           </BoardName>
           <IconContainer onClick={closePopup}>
