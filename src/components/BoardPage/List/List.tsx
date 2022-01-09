@@ -4,7 +4,6 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import AddNewItem from '../AddNewItem';
 import Card from '../Card';
 import NameHolder from '../NameHolder';
-import IconHolder from '../../Common/IconHolder';
 import {
   ListContainer,
   CardList,
@@ -14,6 +13,7 @@ import {
   IconContainer,
 } from './List.style';
 import { CardListType } from '../BoardPage/BoardPage.type';
+import DeleteIcon from '../../Common/DeleteIcon/DeleteIcon';
 
 const List = ({ name, cards }: CardListType) => (
   <Droppable droppableId={name} type="card">
@@ -21,10 +21,10 @@ const List = ({ name, cards }: CardListType) => (
       <ListContainer>
         <HeaderContainer>
           <NameContainer>
-            <NameHolder name={name} type="List" />
+            <NameHolder name={name} type="list" />
           </NameContainer>
           <IconContainer>
-            <IconHolder name="delete" color="#5e6c84" />
+            <DeleteIcon name={name} type="list" />
           </IconContainer>
         </HeaderContainer>
         <CardList
@@ -40,7 +40,7 @@ const List = ({ name, cards }: CardListType) => (
                   {...draggableProvided.draggableProps}
                   {...draggableProvided.dragHandleProps}
                 >
-                  <Card name={card.name} />
+                  <Card name={card.name} listName={name} />
                 </CardContainer>
               )}
             </Draggable>

@@ -10,6 +10,7 @@ import {
   orderBy,
   Timestamp,
 } from 'firebase/firestore';
+import { CardListType } from '../components/BoardPage/BoardPage/BoardPage.type';
 import { db } from './firebase';
 
 const DATA_COLLECTION = 'data';
@@ -135,6 +136,33 @@ export const getBoard = async (
       if (returnIdx) return boardIdx;
 
       if (boardIdx !== -1) return boardList[boardIdx];
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  return [];
+};
+
+/*
+Get the board with the given name
+*/
+export const saveCardChanges = async (
+  workspaceName: string,
+  boardName: string,
+  cards: CardListType[]
+) => {
+  try {
+    const workspaceData = await getWorkspace(workspaceName);
+    if (workspaceData !== '') {
+      const docRef = doc(db, DATA_COLLECTION, workspaceData.id);
+      const boardList = workspaceData.get('boards');
+      const boardIdx = boardList.findIndex(
+        (board: any) => board.name === boardName
+      );
+
+      boardList[boardIdx].lists = cards;
+      updateDoc(docRef, { boards: boardList });
     }
   } catch (err) {
     console.log(err);

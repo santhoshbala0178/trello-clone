@@ -27,7 +27,6 @@ const StarIcon = ({ type, isClicked }: StarIconType) => {
 
   useEffect(() => {
     if (isClicked) {
-      console.log(isClicked, 'here');
       setName('starFilled');
       setColor('#FFFF00');
     }

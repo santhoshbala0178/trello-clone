@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import cardsModifyAction from '../../../actions/cardsModifyAction';
+import { CARD_NAME_EDIT, LIST_NAME_EDIT } from '../../../constants/actionTypes';
 import {
   NameHolderContainer,
   NameHolderHolder,
@@ -6,13 +9,25 @@ import {
 } from './NameHolder.style';
 import { NameHolderType } from './NameHolder.type';
 
-const NameHolder = ({ name, type }: NameHolderType) => {
+const mapDispatchToProps = {
+  cardsModifyActionProp: cardsModifyAction,
+};
+
+const connector = connect(null, mapDispatchToProps);
+
+type Props = ConnectedProps<typeof connector> & NameHolderType;
+
+const NameHolder = ({ name, listName, type, cardsModifyActionProp }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [fieldValue, setFieldValue] = useState(name);
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onNameEdit = (isEdit: boolean) => {
-    setIsEditing(isEdit);
+    if (type !== 'board') {
+      // To DO: Board name edit functionality
+      setIsEditing(isEdit);
+    }
   };
 
   useEffect(() => {
@@ -25,35 +40,50 @@ const NameHolder = ({ name, type }: NameHolderType) => {
       }
     };
 
-    const handleKeyEvent = (e: any) => {
-      if (e.key === 'Enter' || e.key === 'Escape') {
-        onNameEdit(false);
-      }
-    };
-
     window.addEventListener('click', handleClick);
-    window.addEventListener('keypress', handleKeyEvent);
 
     return () => {
       window.removeEventListener('click', handleClick);
-      window.removeEventListener('keypress', handleKeyEvent);
     };
   }, []);
 
+  const setName = (e: any) => {
+    setFieldValue(e.target.value);
+  };
+
+  const handleKeyPress = (e: any) => {
+    if (e.key === 'Enter' || e.key === 'Escape') {
+      onNameEdit(false);
+      if (type === 'card') {
+        cardsModifyActionProp(CARD_NAME_EDIT, {
+          name,
+          listName,
+        });
+      } else if (type === 'list') {
+        cardsModifyActionProp(LIST_NAME_EDIT, {
+          name,
+          listName,
+        });
+      }
+    }
+  };
+
   return (
     <NameHolderContainer isEditing={isEditing} type={type} ref={ref}>
-      <NameHolderHolder isEditing={isEditing} name={name} type={type}>
-        {name}
+      <NameHolderHolder isEditing={isEditing} name={fieldValue} type={type}>
+        {fieldValue}
       </NameHolderHolder>
       <NameHolderInput
+        onKeyPress={handleKeyPress}
         isEditing={isEditing}
-        name={name}
+        name={fieldValue}
         type={type}
-        value={name}
+        value={fieldValue}
         ref={inputRef}
+        onChange={setName}
       />
     </NameHolderContainer>
   );
 };
 
-export default NameHolder;
+export default connector(NameHolder);

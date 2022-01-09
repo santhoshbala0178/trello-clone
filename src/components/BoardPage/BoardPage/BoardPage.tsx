@@ -13,43 +13,22 @@ import {
   ListsContainer,
   DraggableListContainer,
   IconHolder,
+  SaveChanges,
 } from './BoardPage.style';
 import NameHolder from '../NameHolder/NameHolder';
 import AddNewItem from '../AddNewItem/AddNewItem';
-import { getBoard, updateStarredBoard } from '../../../firebase/manageData';
+import {
+  getBoard,
+  saveCardChanges,
+  updateStarredBoard,
+} from '../../../firebase/manageData';
 import cardsModifyAction from '../../../actions/cardsModifyAction';
 import {
   ORDER_CARD,
   ORDER_LIST,
   SET_DATA,
 } from '../../../constants/actionTypes';
-
-const cardVals = [
-  {
-    name: 'to do',
-    cards: [
-      { id: '1', name: 'new' },
-      { id: '2', name: 'cards' },
-      { id: '3', name: 'Onemore' },
-    ],
-  },
-  {
-    name: 'completed',
-    cards: [
-      { id: '4', name: 'comp_new' },
-      { id: '5', name: 'comp_cards' },
-      { id: '6', name: 'comp_Onemore' },
-    ],
-  },
-  {
-    name: 'one more',
-    cards: [
-      { id: '7', name: 'comp_new' },
-      { id: '8', name: 'comp_cards' },
-      { id: '9', name: 'comp_Onemore' },
-    ],
-  },
-];
+import Loader from '../../Common/Loader';
 
 const mapStateToProps = (state: RootState) => ({
   cardsReducer: state.cardsReducer,
@@ -65,6 +44,7 @@ type Props = ConnectedProps<typeof connector>;
 
 const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
   const [isStarred, setIsStarred] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { workspaceName, boardName } = useParams();
 
   const getBoardData = async () => {
@@ -74,10 +54,14 @@ const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
       false
     );
     setIsStarred(boardData.starred);
-    if (true) {
-      // (boardData?.cards?.length === 0) {
-      cardsModifyActionProp(SET_DATA, cardVals);
+
+    if (boardData?.lists?.length > 0) {
+      cardsModifyActionProp(SET_DATA, boardData?.lists);
+    } else {
+      cardsModifyActionProp(SET_DATA, []);
     }
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -109,7 +93,12 @@ const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
     setIsStarred(!isStarred);
   };
 
-  console.log(cardsReducer);
+  const saveChanges = () => {
+    console.log(cardsReducer);
+    saveCardChanges(workspaceName || '', boardName || '', cardsReducer);
+  };
+
+  if (isLoading) return <Loader />;
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
@@ -120,6 +109,7 @@ const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
             <StarIcon type="header" isClicked={isStarred} />
           </IconHolder>
           <BoardWorkspace name={workspaceName} />
+          <SaveChanges onClick={saveChanges}>Save Changes</SaveChanges>
         </BoardPageHeader>
         <Droppable droppableId="cards" direction="horizontal" type="list">
           {(provided) => (
@@ -128,23 +118,24 @@ const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {cardsReducer.map((list, index) => (
-                <Draggable
-                  key={list.name}
-                  draggableId={list.name}
-                  index={index}
-                >
-                  {(draggableProvided) => (
-                    <DraggableListContainer
-                      ref={draggableProvided.innerRef}
-                      {...draggableProvided.draggableProps}
-                      {...draggableProvided.dragHandleProps}
-                    >
-                      <List name={list.name} cards={list.cards} />
-                    </DraggableListContainer>
-                  )}
-                </Draggable>
-              ))}
+              {cardsReducer.length > 0 &&
+                cardsReducer.map((list, index) => (
+                  <Draggable
+                    key={list.name}
+                    draggableId={list.name}
+                    index={index}
+                  >
+                    {(draggableProvided) => (
+                      <DraggableListContainer
+                        ref={draggableProvided.innerRef}
+                        {...draggableProvided.draggableProps}
+                        {...draggableProvided.dragHandleProps}
+                      >
+                        <List name={list.name} cards={list.cards} />
+                      </DraggableListContainer>
+                    )}
+                  </Draggable>
+                ))}
               {provided.placeholder}
               <AddNewItem type="list" />
             </ListsContainer>

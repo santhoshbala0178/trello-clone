@@ -36,8 +36,11 @@ const Banner: React.FC<Props> = ({
   return (
     <BannerContainer>
       <DetailsContainer>
+        <BannerButton name="Home" />
+        {/* TODO Add Workspace and Starred buttons to show boards separately
         <BannerButton name="Workspaces" />
         <BannerButton name="Starred" />
+        */}
         <BannerCreateButton />
       </DetailsContainer>
       <AccountButton initials={getInitials()} />

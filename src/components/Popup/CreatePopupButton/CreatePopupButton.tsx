@@ -19,7 +19,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = {
-  popupStateAction,
+  popupStateActionProp: popupStateAction,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -30,17 +30,21 @@ const CreatePopupButton = ({
   header,
   description,
   popupStateReducer,
+  popupStateActionProp,
 }: Props) => {
   const handleButtonClick = () => {
     if (header === 'Create Workspace') {
-      popupStateAction(
+      popupStateActionProp(
         CREATE_WORKSPACE_POPUP,
         !popupStateReducer.createWorkspacePopup
       );
-      popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup);
+      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup);
     } else {
-      popupStateAction(CREATE_BOARD_POPUP, !popupStateReducer.createBoardPopup);
-      popupStateAction(CREATE_POPUP, !popupStateReducer.createPopup);
+      popupStateActionProp(
+        CREATE_BOARD_POPUP,
+        !popupStateReducer.createBoardPopup
+      );
+      popupStateActionProp(CREATE_POPUP, !popupStateReducer.createPopup);
     }
   };
 

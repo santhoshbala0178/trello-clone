@@ -28,6 +28,7 @@ const AutoTextArea = ({ type, text, setText }: AutoTextAreaType) => {
         ref={textAreaRef}
         onChange={onTextChange}
         height={textAreaHeight}
+        autoFocus
       />
     </TextContainer>
   );

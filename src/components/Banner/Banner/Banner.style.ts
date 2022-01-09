@@ -17,6 +17,6 @@ export const DetailsContainer = styled.div`
   padding: 10px;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
 `;

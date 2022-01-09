@@ -30,7 +30,8 @@ const BoardWorkspace = ({
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const onClick = () => {
-    popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace);
+    // TO DO: Change Workspace Functionality
+    // popupStateActionProp(CHANGE_WORKSPACE, !popupStateReducer.changeWorkspace);
   };
 
   useEffect(() => {

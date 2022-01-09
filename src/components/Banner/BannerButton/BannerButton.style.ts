@@ -1,4 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+export const HomePageLink = styled(Link)`
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 export const ShowDetailsButton = styled.button`
   background: none;
@@ -8,6 +17,8 @@ export const ShowDetailsButton = styled.button`
   font: inherit;
   display: flex;
   align-items: center;
+  padding: 5px;
+
   &: hover {
     background: ${(props) => props.theme.colors.lightBlue};
     border-radius: 4px;

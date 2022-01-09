@@ -1,5 +1,6 @@
 type CardType = {
-    name: string,
+  name: string;
+  listName?: string;
 };
 
 export default CardType;

@@ -11,6 +11,21 @@ export const BoardPageHeader = styled.div`
   margin-bottom: 20px;
 `;
 
+export const SaveChanges = styled.button`
+  align-items: center;
+  border-radius: 4px;
+  background: ${(props) => props.theme.colors.lightBlue};
+  color: ${(props) => props.theme.colors.white};
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  &: hover {
+    cursor: pointer;
+    background: ${(props) => props.theme.colors.blue};
+  }
+`;
+
 export const ListsContainer = styled.div`
   display: flex;
   align-items: flex-start;

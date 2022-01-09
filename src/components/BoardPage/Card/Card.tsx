@@ -1,5 +1,5 @@
 import React from 'react';
-import IconHolder from '../../Common/IconHolder';
+import DeleteIcon from '../../Common/DeleteIcon/DeleteIcon';
 import NameHolder from '../NameHolder';
 import {
   CardContainer,
@@ -9,17 +9,21 @@ import {
 } from './Card.style';
 import CardType from './Card.type';
 
-const Card = ({ name }: CardType) => (
-  <CardContainer>
-    <NameContainer>
-      <NameHolder name={name} type="card" />
-    </NameContainer>
-    <CardEditor>
-      <IconContainer>
-        <IconHolder name="delete" color="#5e6c84" />
-      </IconContainer>
-    </CardEditor>
-  </CardContainer>
-);
+const Card = ({ name, listName }: CardType) => {
+  console.log(listName);
+
+  return (
+    <CardContainer>
+      <NameContainer>
+        <NameHolder name={name} type="card" />
+      </NameContainer>
+      <CardEditor>
+        <IconContainer>
+          <DeleteIcon name={name} listName={listName} type="card" />
+        </IconContainer>
+      </CardEditor>
+    </CardContainer>
+  );
+};
 
 export default Card;

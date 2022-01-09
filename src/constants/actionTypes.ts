@@ -25,3 +25,11 @@ export const ADD_NEW_LIST_ITEM = 'ADD_NEW_LIST_ITEM';
 export const ORDER_LIST = 'ORDER_LIST';
 
 export const ORDER_CARD = 'ORDER_CARD';
+
+export const LIST_NAME_EDIT = 'LIST_NAME_EDIT';
+
+export const CARD_NAME_EDIT = 'CARD_NAME_EDIT';
+
+export const LIST_DELETE = 'LIST_DELETE';
+
+export const CARD_DELETE = 'CARD_DELETE';
