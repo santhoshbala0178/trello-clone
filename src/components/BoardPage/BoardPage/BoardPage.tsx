@@ -94,7 +94,6 @@ const BoardPage = ({ cardsReducer, cardsModifyActionProp }: Props) => {
   };
 
   const saveChanges = () => {
-    console.log(cardsReducer);
     saveCardChanges(workspaceName || '', boardName || '', cardsReducer);
   };
 
