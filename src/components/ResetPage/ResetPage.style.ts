@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Register = styled.div`
+export const Reset = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -9,7 +9,7 @@ export const Register = styled.div`
   justify-content: center;
 `;
 
-export const RegisterContainer = styled.div`
+export const ResetContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -20,11 +20,6 @@ export const RegisterContainer = styled.div`
   padding: 20px 30px;
 `;
 
-export const BlockContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const Input = styled.input`
   padding: 10px;
   font-size: 18px;
@@ -33,7 +28,7 @@ export const Input = styled.input`
   border: solid 1px;
 `;
 
-export const RegisterButton = styled.button`
+export const ResetButton = styled.button`
   padding: 5px;
   font-size: 16px;
   margin-bottom: 10px;

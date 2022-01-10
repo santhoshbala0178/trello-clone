@@ -1,3 +1,4 @@
+import { getAuth } from 'firebase/auth';
 import {
   addDoc,
   collection,
@@ -6,7 +7,6 @@ import {
   query,
   where,
   updateDoc,
-  onSnapshot,
   orderBy,
   Timestamp,
 } from 'firebase/firestore';
@@ -32,22 +32,19 @@ export const addNewWorkspace = async (workspaceName: string) => {
 /*
 Get all workspace Data
 */
-export const getAllWorkspaces = async (setWorkspaces: any) => {
+export const getAllWorkspacesQuery = () => {
   try {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    console.log('heree', user);
     const q = query(collection(db, DATA_COLLECTION), orderBy('created'));
-    onSnapshot(q, (querySnapshot) => {
-      if (!querySnapshot.empty) {
-        const workspaces: any = [];
-        querySnapshot.forEach((eachDoc) => workspaces.push(eachDoc.data()));
-        setWorkspaces([...workspaces]);
-      }
-      return [];
-    });
+
+    return q;
   } catch (err) {
     console.log(err);
   }
 
-  return [];
+  return false;
 };
 
 /*

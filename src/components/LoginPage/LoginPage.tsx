@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signIn, signInWithGoogle } from '../../firebase/userAuthentication';
 import { auth } from '../../firebase/firebase';
 import Loader from '../Common/Loader';
 import {
   Input,
-  GoogleLoginButton,
   LoginButton,
   LoginContainer,
   LoginPageContainer,
-  Register,
-  ResetLink,
+  LoginPageLink,
+  BlockContainer,
 } from './LoginPage.style';
 
 const LoginPage = () => {
@@ -20,7 +19,6 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [user, loadState] = useAuthState(auth);
   const navigate = useNavigate();
-  const showString = "Don't have an account?";
 
   useEffect(() => {
     if (loadState) {
@@ -36,28 +34,31 @@ const LoginPage = () => {
   return (
     <LoginPageContainer>
       <LoginContainer>
-        <Input
-          value={email}
-          placeholder="Email Address"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Input
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <LoginButton onClick={() => signIn(email, password)}>Login</LoginButton>
-        <GoogleLoginButton onClick={signInWithGoogle}>
-          Login with Google
-        </GoogleLoginButton>
-        <ResetLink>
-          <Link to="/reset">Forgot Password</Link>
-        </ResetLink>
-        <Register>
-          {showString}
-          <Link to="/register">Register</Link>
-        </Register>
+        <BlockContainer>
+          <Input
+            value={email}
+            placeholder="Email Address"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </BlockContainer>
+        <BlockContainer>
+          <LoginButton onClick={() => signIn(email, password)}>
+            Login
+          </LoginButton>
+          <LoginButton onClick={signInWithGoogle}>
+            Login with Google
+          </LoginButton>
+        </BlockContainer>
+        <BlockContainer>
+          <LoginPageLink to="/reset">Forgot Password</LoginPageLink>
+          <LoginPageLink to="/register">Sign up for an account</LoginPageLink>
+        </BlockContainer>
       </LoginContainer>
     </LoginPageContainer>
   );

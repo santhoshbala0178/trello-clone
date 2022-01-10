@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {
   registerUser,
@@ -10,10 +10,10 @@ import Loader from '../Common/Loader';
 import {
   Register,
   RegisterContainer,
+  BlockContainer,
   Input,
   RegisterButton,
-  GoogleLoginButton,
-  Login,
+  RegisterLink,
 } from './RegisterPage.style';
 
 const RegisterPage = () => {
@@ -38,32 +38,33 @@ const RegisterPage = () => {
   return (
     <Register>
       <RegisterContainer>
-        <Input
-          value={name}
-          placeholder="Full Name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <Input
-          value={email}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Input
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <RegisterButton onClick={() => registerUser(name, email, password)}>
-          Register
-        </RegisterButton>
-        <GoogleLoginButton onClick={signInWithGoogle}>
-          Login with Google
-        </GoogleLoginButton>
-        <Login>
-          Already have an account?
-          <Link to="/">Login</Link>
-        </Login>
+        <BlockContainer>
+          <Input
+            value={name}
+            placeholder="Full Name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </BlockContainer>
+        <BlockContainer>
+          <RegisterButton onClick={() => registerUser(name, email, password)}>
+            Register
+          </RegisterButton>
+          <RegisterButton onClick={signInWithGoogle}>
+            Login with Google
+          </RegisterButton>
+          <RegisterLink to="/">Already have an account? Login</RegisterLink>
+        </BlockContainer>
       </RegisterContainer>
     </Register>
   );

@@ -1,4 +1,6 @@
-import React, { useEffect, useCallback, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { onSnapshot } from 'firebase/firestore';
+import { Unsubscribe } from 'firebase/auth';
 import {
   ContentContainer,
   HomePageContainer,
@@ -10,26 +12,29 @@ import NavBarItem from '../NavBarItem';
 import WorkspaceHeader from '../WorkspaceHeader';
 import HomePageHeader from '../HomePageHeader';
 import HomePageWorkspace from '../HomePageWorkspace';
-import { getAllWorkspaces } from '../../../firebase/manageData';
+import { getAllWorkspacesQuery } from '../../../firebase/manageData';
 import { WorkspaceType } from '../HomePageWorkspace/HomePageWorkspace.type';
 
 const HomePage = () => {
-  const [workspaces, setWorkspaces] = useState<any>();
-  const isMountedRef = useRef(false);
-
-  const getData = useCallback(async () => {
-    if (isMountedRef.current) {
-      await getAllWorkspaces(setWorkspaces);
-    }
-  }, []);
+  const [workspaces, setWorkspaces] = useState<any>([]);
 
   useEffect(() => {
-    isMountedRef.current = true;
-    getData();
+    // Get all workspace data using snapshot and unsubscribe while unmounting
+    const q = getAllWorkspacesQuery();
+    if (q) {
+      const unsubscribe: Unsubscribe = onSnapshot(q, (querySnapshot) => {
+        if (!querySnapshot.empty) {
+          const dbWorkspaces: any = [];
+          querySnapshot.forEach((eachDoc: any) =>
+            dbWorkspaces.push(eachDoc.data())
+          );
+          setWorkspaces([...dbWorkspaces]);
+        }
+      });
 
-    return () => {
-      isMountedRef.current = false;
-    };
+      return unsubscribe;
+    }
+    return () => undefined;
   }, []);
 
   return (

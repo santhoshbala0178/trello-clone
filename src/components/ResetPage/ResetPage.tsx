@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { passwordReset } from '../../firebase/userAuthentication';
 import { auth } from '../../firebase/firebase';
@@ -7,17 +7,16 @@ import Loader from '../Common/Loader';
 import {
   Reset,
   Input,
-  Register,
+  RegisterLink,
   ResetButton,
   ResetContainer,
-} from './ResetPage.type';
+} from './ResetPage.style';
 
 const ResetPage = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
   const [user, loadState] = useAuthState(auth);
   const navigate = useNavigate();
-  const showString = "Don't have an account?";
 
   useEffect(() => {
     if (loadState) {
@@ -39,10 +38,7 @@ const ResetPage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <ResetButton onClick={() => passwordReset(email)}>Reset</ResetButton>
-        <Register>
-          {showString}
-          <Link to="/register">Register</Link>
-        </Register>
+        <RegisterLink to="/register">Sign up for an account</RegisterLink>
       </ResetContainer>
     </Reset>
   );
