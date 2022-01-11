@@ -24,14 +24,16 @@ const CreateBoard: React.FC<Props> = ({
   const onCreateNewBoard = () => {
     popupStateActionProp(
       CREATE_BOARD_POPUP,
-      !popupStateReducer.createWorkspacePopup
+      !popupStateReducer.createBoardPopup
     );
   };
 
   return (
     <>
       <CreateNewBoard onClick={onCreateNewBoard}>
-        <CreateBoardText>Create new board</CreateBoardText>
+        <CreateBoardText data-testid="create-board">
+          Create new board
+        </CreateBoardText>
       </CreateNewBoard>
     </>
   );

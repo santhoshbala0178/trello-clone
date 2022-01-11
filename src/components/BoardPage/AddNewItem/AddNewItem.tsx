@@ -51,7 +51,12 @@ const AddNewItem = ({
       {((type === 'card' &&
         (!addItemReducer.addCard || addItemReducer.listName !== name)) ||
         (type === 'list' && !addItemReducer.addList)) && (
-        <AddNewItemContainer data-name={name} type={type} onClick={onClick}>
+        <AddNewItemContainer
+          data-name={name}
+          type={type}
+          onClick={onClick}
+          data-testid="add-new-item"
+        >
           <IconContainer>
             <IconHolder name="plus" color="#5e6c84" />
           </IconContainer>

@@ -64,7 +64,7 @@ const NewItem = ({
   };
 
   return (
-    <NewItemContainer>
+    <NewItemContainer data-testid="new-item">
       <AutoTextArea type={type} text={text} setText={setText} />
       <ButtonContainer>
         <AddButton onClick={addNewItem}>{`Add ${type}`}</AddButton>

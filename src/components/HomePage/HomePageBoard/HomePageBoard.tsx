@@ -17,10 +17,14 @@ const HomePageBoard = ({ workspaceName, board }: HomePageBoardType) => {
   };
 
   return (
-    <HomePageBoardContainer>
+    <HomePageBoardContainer data-testid="home-page-board">
       <BoardPageLink to={`/home/${workspaceName}/${board?.name}`}>
         <HomePageBoardText>{board?.name}</HomePageBoardText>
-        <StarIconContainer isClicked={board?.starred} onClick={onIconClick}>
+        <StarIconContainer
+          data-testid="star-icon-container"
+          isClicked={board?.starred}
+          onClick={onIconClick}
+        >
           <StarIcon type="board" isClicked={board?.starred} />
         </StarIconContainer>
       </BoardPageLink>
