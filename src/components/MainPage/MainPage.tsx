@@ -20,7 +20,6 @@ const MainPage = () => {
       const usersCollection = collection(db, 'users');
       const userQuery = query(usersCollection, where('uid', '==', user?.uid));
       const docs = await getDocs(userQuery);
-      console.log(docs);
       const dbUser = await (await getDocs(userQuery)).docs[0].data();
       setName(dbUser.name);
     } catch (err) {
@@ -32,7 +31,6 @@ const MainPage = () => {
   useEffect(() => {
     if (loadState) {
       setLoading(true);
-      console.log(loading);
       return;
     }
     if (!user) {

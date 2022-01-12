@@ -14,8 +14,6 @@ const connector = connect(null, mapDispatchToProps);
 type Props = ConnectedProps<typeof connector> & DeleteIconType;
 
 const DeleteIcon = ({ name, listName, type, cardsModifyActionProp }: Props) => {
-  console.log(name, listName);
-
   const handleDelete = () => {
     if (type === 'card') {
       cardsModifyActionProp(CARD_DELETE, {

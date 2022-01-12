@@ -12,7 +12,6 @@ import {
 } from './HomePageWorkspace.style';
 
 const HomePageWorkspace = ({ workspace }: HomePageWorkspaceType) => {
-  console.log(workspace);
   return (
     <WorkspaceContainer>
       <Header>

@@ -10,8 +10,6 @@ import {
 import CardType from './Card.type';
 
 const Card = ({ name, listName }: CardType) => {
-  console.log(listName);
-
   return (
     <CardContainer>
       <NameContainer>

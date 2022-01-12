@@ -51,7 +51,6 @@ const CreateBoardPopup: React.FC<Props> = ({ popupStateActionProp }) => {
   };
 
   const createNewBoard = async () => {
-    console.log(workspace, boardName);
     const boardIdx = await getBoard(workspace, boardName, true);
     if (boardIdx === -1) {
       addNewBoard(workspace, boardName);

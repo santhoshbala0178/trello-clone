@@ -33,7 +33,6 @@ const AccountPopup: React.FC<Props> = ({
   const closePopup = () => {
     popupStateActionProp(ACCOUNT_POPUP, false);
   };
-  console.log(userName, userEmail, initials);
 
   return (
     <AccountPopupContainer>

@@ -36,7 +36,7 @@ export const getAllWorkspacesQuery = () => {
   try {
     const auth = getAuth();
     const user = auth.currentUser;
-    console.log('heree', user);
+
     const q = query(collection(db, DATA_COLLECTION), orderBy('created'));
 
     return q;
@@ -100,7 +100,6 @@ export const addNewBoard = async (workspaceName: string, boardName: string) => {
       } else {
         boardList = [newItem];
       }
-      console.log(boardList);
       updateDoc(docRef, { boards: boardList });
     }
   } catch (err) {
