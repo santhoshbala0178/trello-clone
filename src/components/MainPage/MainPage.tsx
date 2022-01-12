@@ -12,14 +12,12 @@ import MainPageContainer from './MainPage.style';
 const MainPage = () => {
   const [user, loadState] = useAuthState(auth);
   const [name, setName] = useState('');
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
     try {
       const usersCollection = collection(db, 'users');
       const userQuery = query(usersCollection, where('uid', '==', user?.uid));
-      const docs = await getDocs(userQuery);
       const dbUser = await (await getDocs(userQuery)).docs[0].data();
       setName(dbUser.name);
     } catch (err) {
@@ -30,7 +28,6 @@ const MainPage = () => {
 
   useEffect(() => {
     if (loadState) {
-      setLoading(true);
       return;
     }
     if (!user) {
@@ -38,7 +35,6 @@ const MainPage = () => {
       return;
     }
     fetchUserName();
-    setLoading(false);
   }, [user, loadState]);
 
   if (loadState) return <Loader />;

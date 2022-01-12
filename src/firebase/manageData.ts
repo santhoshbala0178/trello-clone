@@ -34,9 +34,6 @@ Get all workspace Data
 */
 export const getAllWorkspacesQuery = () => {
   try {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
     const q = query(collection(db, DATA_COLLECTION), orderBy('created'));
 
     return q;

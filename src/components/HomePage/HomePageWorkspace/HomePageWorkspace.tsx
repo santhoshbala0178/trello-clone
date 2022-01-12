@@ -11,29 +11,27 @@ import {
   Header,
 } from './HomePageWorkspace.style';
 
-const HomePageWorkspace = ({ workspace }: HomePageWorkspaceType) => {
-  return (
-    <WorkspaceContainer>
-      <Header>
-        <WorkspaceIcon code={workspace?.name.charCodeAt(0)}>
-          <LetterContainer>{workspace?.name.substring(0, 1)}</LetterContainer>
-        </WorkspaceIcon>
-        <WorkspaceName>{workspace?.name}</WorkspaceName>
-      </Header>
-      <ContentContainer>
-        {workspace?.boards &&
-          workspace.boards?.length > 0 &&
-          workspace.boards.map((board) => (
-            <HomePageBoard
-              workspaceName={workspace?.name}
-              board={board}
-              key={board?.name}
-            />
-          ))}
-        <CreateBoard />
-      </ContentContainer>
-    </WorkspaceContainer>
-  );
-};
+const HomePageWorkspace = ({ workspace }: HomePageWorkspaceType) => (
+  <WorkspaceContainer>
+    <Header>
+      <WorkspaceIcon code={workspace?.name.charCodeAt(0)}>
+        <LetterContainer>{workspace?.name.substring(0, 1)}</LetterContainer>
+      </WorkspaceIcon>
+      <WorkspaceName>{workspace?.name}</WorkspaceName>
+    </Header>
+    <ContentContainer>
+      {workspace?.boards &&
+        workspace.boards?.length > 0 &&
+        workspace.boards.map((board) => (
+          <HomePageBoard
+            workspaceName={workspace?.name}
+            board={board}
+            key={board?.name}
+          />
+        ))}
+      <CreateBoard />
+    </ContentContainer>
+  </WorkspaceContainer>
+);
 
 export default HomePageWorkspace;

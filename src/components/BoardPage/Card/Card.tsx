@@ -9,19 +9,17 @@ import {
 } from './Card.style';
 import CardType from './Card.type';
 
-const Card = ({ name, listName }: CardType) => {
-  return (
-    <CardContainer>
-      <NameContainer>
-        <NameHolder name={name} type="card" />
-      </NameContainer>
-      <CardEditor>
-        <IconContainer>
-          <DeleteIcon name={name} listName={listName} type="card" />
-        </IconContainer>
-      </CardEditor>
-    </CardContainer>
-  );
-};
+const Card = ({ name, listName }: CardType) => (
+  <CardContainer>
+    <NameContainer>
+      <NameHolder name={name} type="card" />
+    </NameContainer>
+    <CardEditor>
+      <IconContainer>
+        <DeleteIcon name={name} listName={listName} type="card" />
+      </IconContainer>
+    </CardEditor>
+  </CardContainer>
+);
 
 export default Card;
