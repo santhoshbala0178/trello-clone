@@ -8,8 +8,11 @@ export const BoardPageContainer = styled.div`
 export const BoardPageHeader = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 10px;
   margin-bottom: 20px;
+
+  > * {
+    margin-right: 10px;
+  }
 `;
 
 export const SaveChanges = styled.button`
@@ -21,6 +24,7 @@ export const SaveChanges = styled.button`
   outline: none;
   border: none;
   font-weight: 600;
+  font-size: 16px;
   &: hover {
     cursor: pointer;
     background: ${(props) => props.theme.colors.blue};

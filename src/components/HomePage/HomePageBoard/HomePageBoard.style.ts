@@ -36,6 +36,7 @@ export const HomePageBoardContainer = styled.div`
   box-shadow: 0 1.5em 2.5em -0.5em rgba(#000000, 0.1);
   transition: transform 0.45s ease, background 0.45s ease;
   margin-bottom: 50px;
+  margin-right: 20px;
   &: hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, 0.1);
     cursor: pointer;

@@ -12,7 +12,6 @@ export const Reset = styled.div`
 export const ResetContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
   text-align: center;
   background-color: ${(props) => props.theme.colors.white};
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);

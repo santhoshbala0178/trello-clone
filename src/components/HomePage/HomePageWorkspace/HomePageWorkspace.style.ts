@@ -39,6 +39,5 @@ export const WorkspaceName = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  gap: 20px;
   flex-wrap: wrap;
 `;

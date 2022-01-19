@@ -7,6 +7,7 @@ export const HomePageLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 10px;
 `;
 
 export const ShowDetailsButton = styled.button`

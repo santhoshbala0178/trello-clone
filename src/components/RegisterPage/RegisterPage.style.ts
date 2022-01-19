@@ -12,7 +12,6 @@ export const Register = styled.div`
 export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
   text-align: center;
   background-color: ${(props) => props.theme.colors.white};
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);
@@ -23,6 +22,7 @@ export const RegisterContainer = styled.div`
 export const BlockContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 `;
 
 export const Input = styled.input`
