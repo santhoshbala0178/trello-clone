@@ -29,6 +29,18 @@ const LoginPage = () => {
     if (user) navigate('/home');
   }, [user, loadState]);
 
+  const userSignIn = async () => {
+    setLoading(true);
+    await signIn(email, password);
+    setLoading(false);
+  };
+
+  const anonymousSignIn = async () => {
+    setLoading(true);
+    await signIn('dummy@gmail.com', 'Dummy@123');
+    setLoading(false);
+  };
+
   if (loading) return <Loader />;
 
   return (
@@ -48,12 +60,11 @@ const LoginPage = () => {
           />
         </BlockContainer>
         <BlockContainer>
-          <LoginButton onClick={() => signIn(email, password)}>
-            Login
-          </LoginButton>
+          <LoginButton onClick={userSignIn}>Login</LoginButton>
           <LoginButton onClick={signInWithGoogle}>
             Login with Google
           </LoginButton>
+          <LoginButton onClick={anonymousSignIn}>Login as Guest</LoginButton>
         </BlockContainer>
         <BlockContainer>
           <LoginPageLink to="/reset">Forgot Password</LoginPageLink>
